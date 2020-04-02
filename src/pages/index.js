@@ -3,67 +3,192 @@ import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
 
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
-
+const HomePage = ({ data, location }) => {
+  const events = data.allContentfulEvent.edges,
+    classes = data.allContentfulClass.edges,
+    consultations = data.allContentfulConsultation.edges,
+    posts = data.allContentfulPost.edges,
+    consultants = data.allContentfulConsultant.edges,
+    gallery = data.allContentfulGallery.edges[0];
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      <Bio />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
+    <Layout location={location}>
+      {consultants.map(({node}) => {
         return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
+          <article key={node.id}>
+            <h3>{node.name}</h3>
           </article>
         )
       })}
+      {posts.map(({ node }) => {
+        return (
+          <article key={node.id}>
+            <h3>{node.title}</h3>
+          </article>
+        )
+      })}
+      {consultations.map(({ node }) => {
+        return (
+          <article key={node.id}>
+            <h3>{node.title}</h3>
+          </article>
+        )
+      })}
+      {classes.map(({ node }) => {
+        return (
+          <article key={node.id}>
+            <h3>{node.title}</h3>
+          </article>
+        )
+      })}
+      {events.map(({ node }) => {
+        return (
+          <article key={node.id}>
+            <h3>{node.title}</h3>
+          </article>
+        )
+      })}
+      <article key={gallery.node.id}>
+        <h3>{gallery.node.title}</h3>
+      </article>
     </Layout>
   )
 }
 
-export default BlogIndex
+export default HomePage
 
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
+export const homePageQuery = graphql`
+  query contentfulQuery {
+    allContentfulConsultant (
+      limit: 3, 
+      sort: { fields: [updatedAt], order: DESC },
+      filter: {
+      node_locale: {
+        eq: "bg"
       }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      }) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
+          id
+          name
+          slug
+          photo {
+            file {
+              url
+              fileName
+              contentType
+            }
           }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
+        }
+      }
+    }
+
+    allContentfulPost(limit: 2, sort: {
+      fields: [updatedAt],
+      order: DESC
+    },
+    filter: {
+    node_locale: {
+      eq: "bg"
+    }
+    }) {
+      edges {
+        node {
+          id
+          slug
+          title
+          description {
             description
+          }
+        }
+      }
+    }
+
+    allContentfulConsultation(limit: 5, sort: {
+      fields: [updatedAt],
+      order: DESC
+    },
+    filter: {
+    node_locale: {
+      eq: "bg"
+    }
+    }) {
+      edges {
+        node {
+          id
+          slug
+          title
+          description {
+            description
+          }
+          image {
+            file {
+              url
+              fileName
+              contentType
+            }
+          }
+        }
+      }
+    }
+
+    allContentfulEvent(limit: 6, sort: {
+      fields: [date],
+      order: DESC
+    },
+    filter: {
+    node_locale: {
+      eq: "bg"
+    }
+    }) {
+      edges {
+        node {
+          id
+          slug
+          title
+          description {
+            description
+          }
+          hosts
+          date(formatString: "")
+          weekDay
+          categories
+        }
+      }
+    }
+    
+    allContentfulClass(limit: 4, filter: {
+        node_locale: {
+          eq: "bg"
+        }
+      }) {
+      edges {
+        node {
+          id
+          title
+        }
+      }
+    }
+
+    allContentfulGallery(limit: 1, filter: {
+        node_locale: {
+          eq: "bg"
+        }
+      }) {
+      edges {
+        node {
+          id
+          slug
+          title
+          description {
+            description
+          }
+          images {
+            file {
+              url
+              fileName
+              contentType
+            }
           }
         }
       }

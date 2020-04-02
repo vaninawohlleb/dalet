@@ -4,61 +4,95 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const result = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
-            }
+  const event = path.resolve(`./src/templates/event.js`),
+    classItem = path.resolve(`./src/templates/class-item.js`),
+    consultation = path.resolve(`./src/templates/consultation.js`),
+    blogPost = path.resolve(`./src/templates/blog-post.js`),
+    consultant = path.resolve(`./src/templates/consultant.js`);
+  
+  const result = await graphql(`
+    {
+      allContentfulConsultant {
+        edges {
+          node {
+            id
+            slug
           }
         }
       }
-    `
-  )
+
+      allContentfulPost {
+        edges {
+          node {
+            id
+            slug
+            categories
+          }
+        }
+      }
+
+      allContentfulConsultation {
+        edges {
+          node {
+            id
+            slug
+          }
+        }
+      }
+
+      allContentfulClass {
+        edges {
+          node {
+            id
+            slug
+            categories
+          }
+        }
+      }
+
+      allContentfulEvent {
+        edges {
+          node {
+            id
+            slug
+            categories
+          }
+        }
+      }
+    }
+  `)
 
   if (result.errors) {
     throw result.errors
   }
 
-  // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
+  // Create all data arrays
+  const events = result.data.allContentfulEvent.edges,
+      classes = result.data.allContentfulClass.edges,
+      consultations = result.data.allContentfulConsultation.edges,
+      posts = result.data.allContentfulPost.edges,
+      consultants = result.data.allContentfulConsultant.edges
 
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
 
-    createPage({
-      path: post.node.fields.slug,
-      component: blogPost,
-      context: {
-        slug: post.node.fields.slug,
-        previous,
-        next,
-      },
-    })
-  })
-}
+  function createAll(items, path, component) {
+    items.forEach((item) => {
+      // const previous = index === posts.length - 1 ? null : posts[index + 1].node
+      // const next = index === 0 ? null : posts[index - 1].node
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
+      createPage({
+        path: `${path}/${item.node.slug}`,
+        component,
+        context: {
+          slug: item.node.slug,
+        },
+      })
     })
   }
+  
+  createAll(events, 'event', event);
+  createAll(classes, 'class', classItem);
+  createAll(consultations, 'consultation', consultation);
+  createAll(posts, 'post', blogPost);
+  createAll(consultants, 'consultant', consultant);
 }
+
