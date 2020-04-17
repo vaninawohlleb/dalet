@@ -1,8 +1,14 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
+import Layout from "../components/layout";
+import Hero from "../components/hero";
+import Consultants from "../components/consultants";
+import Posts from "../components/posts";
+import Consultations from "../components/consultations";
+import Classes from "../components/classes";
+import Events from "../components/events";
+import Gallery from "../components/gallery";
 
 const HomePage = ({ data, location }) => {
   const events = data.allContentfulEvent.edges,
@@ -10,47 +16,18 @@ const HomePage = ({ data, location }) => {
     consultations = data.allContentfulConsultation.edges,
     posts = data.allContentfulPost.edges,
     consultants = data.allContentfulConsultant.edges,
-    gallery = data.allContentfulGallery.edges[0];
+    gallery = data.allContentfulGallery.edges[0],
+    homePage = data.allContentfulPage.edges[0];
+
   return (
     <Layout location={location}>
-      {consultants.map(({node}) => {
-        return (
-          <article key={node.id}>
-            <h3>{node.name}</h3>
-          </article>
-        )
-      })}
-      {posts.map(({ node }) => {
-        return (
-          <article key={node.id}>
-            <h3>{node.title}</h3>
-          </article>
-        )
-      })}
-      {consultations.map(({ node }) => {
-        return (
-          <article key={node.id}>
-            <h3>{node.title}</h3>
-          </article>
-        )
-      })}
-      {classes.map(({ node }) => {
-        return (
-          <article key={node.id}>
-            <h3>{node.title}</h3>
-          </article>
-        )
-      })}
-      {events.map(({ node }) => {
-        return (
-          <article key={node.id}>
-            <h3>{node.title}</h3>
-          </article>
-        )
-      })}
-      <article key={gallery.node.id}>
-        <h3>{gallery.node.title}</h3>
-      </article>
+      <Hero node={homePage.node} />
+      <Consultants nodes={consultants} />
+      <Posts nodes={posts} />
+      <Consultations nodes={consultations} />
+      <Classes nodes={classes} />
+      <Events nodes={events} />
+      <Gallery node={gallery.node} />
     </Layout>
   )
 }
@@ -59,6 +36,27 @@ export default HomePage
 
 export const homePageQuery = graphql`
   query contentfulQuery {
+    allContentfulPage(filter: {
+      id: {
+        eq: "aa2c0f0a-5ec1-5945-83e8-61b64980a906"
+      }
+    }) {
+      edges {
+        node {
+          id
+          cta1
+          cta2
+          contentful_id
+          linkForFirstButton
+          linkForSecondButton
+          title
+          description {
+            description
+          }
+        }
+      }
+    }
+
     allContentfulConsultant (
       limit: 3, 
       sort: { fields: [updatedAt], order: DESC },
@@ -73,10 +71,8 @@ export const homePageQuery = graphql`
           name
           slug
           photo {
-            file {
-              url
-              fileName
-              contentType
+            fluid(maxWidth: 600) {
+              ...GatsbyContentfulFluid
             }
           }
         }

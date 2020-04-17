@@ -1,5 +1,4 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
 
 const BlogPost = ({ data, location }) => {
   console.log(data)
