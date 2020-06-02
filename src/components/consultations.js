@@ -6,7 +6,7 @@ const Consultations = ({nodes}) => {
       {nodes.map(({node}) => {
         return (
           <article key={node.id}>
-            <h3>{node.title}</h3>
+            <h4>{node.title}</h4>
           </article>
         )
       })}
