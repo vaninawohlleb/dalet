@@ -18,7 +18,7 @@ const GreyContainer = styled.div`
 const HomePage = ({ data, location }) => {
   const events = data.allContentfulEvent.edges,
     classes = data.allContentfulClass.edges,
-    consultations = data.allContentfulConsultation.edges,
+    // consultations = data.allContentfulConsultation.edges,
     posts = data.allContentfulPost.edges,
     consultants = data.allContentfulConsultant.edges,
     gallery = data.allContentfulGallery.edges[0],
@@ -29,7 +29,7 @@ const HomePage = ({ data, location }) => {
       <Hero node={homePage.node} />
       <Consultants nodes={consultants} />
       <Posts nodes={posts} />
-      <Consultations nodes={consultations} />
+      <Consultations />
       <GreyContainer>
         <Classes nodes={classes} />
       </GreyContainer>
@@ -107,32 +107,6 @@ export const homePageQuery = graphql`
       }
     }
 
-    allContentfulConsultation(limit: 5, sort: {
-      fields: [updatedAt],
-      order: DESC
-    },
-    filter: {
-    node_locale: {
-      eq: "bg"
-    }
-    }) {
-      edges {
-        node {
-          id
-          slug
-          title
-          description {
-            description
-          }
-          image {
-            fluid(maxWidth: 600) {
-              ...GatsbyContentfulFluid
-            }
-          }
-        }
-      }
-    }
-
     allContentfulEvent(limit: 6, sort: {
       fields: [date],
       order: DESC
@@ -152,7 +126,6 @@ export const homePageQuery = graphql`
           }
           hosts
           date(formatString: "")
-          weekDay
           categories
         }
       }
