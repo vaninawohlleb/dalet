@@ -13,30 +13,36 @@ const ClassesContainer = styled.ul`
 
 const Class = styled.li`
   padding: var(--small);
+  color: white;
+
+  h3 {
+    color: white;
+  }
 
   &.meditation {
-    color: var(--green);
+    color: var(--yellow);
 
-    h3 {
-      color: var(--green);
+    h3, a {
+      color: var(--yellow);
     }
   }
 
-  &.astrology {
+  &.taro {
     color: var(--red);
 
-    h3 {
+    h3, a {
       color: var(--red);
     }
   }
+  
 
   .link {
     display: flex;
 
     img {
       max-height: 2.5rem;
-    margin-right: var(--small);
-    align-self: center;
+      margin-right: var(--small);
+      align-self: center;
     }
   }
 `

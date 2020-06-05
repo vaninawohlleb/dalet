@@ -15,11 +15,17 @@ const ConsultantsContainer = styled.ul`
 const Consultant = styled.li`
   position: relative;
 
-  h4 {
+  .gatsby-image-wrapper {
+    max-height: 40vh;
+  }
+
+  h5 {
     position: absolute;
     z-index: 1;
     left: var(--small);
+    top: var(--small);
     text-transform: uppercase;
+    color: white;
   }
 `
 
@@ -30,7 +36,7 @@ const Consultants = ({nodes}) => {
         return (
           <Consultant key={node.id}>
             <Link to={`consultant/${node.slug}`}>
-              <h4>{node.name}</h4>
+              <h5>{node.name}</h5>
               <Img fluid={node.photo.fluid}></Img>
             </Link>
           </Consultant>

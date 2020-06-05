@@ -8,7 +8,7 @@ const HeroContainer = styled.div`
   display: grid;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 90vh;
 `
 const HeroAnimation = styled.div``
 
@@ -19,6 +19,10 @@ const HeroText = styled.div`
   align-self: center;
   padding: var(--small);
   max-width: var(--max-width-mid);
+
+  h1 {
+    color: var(--red);
+  }
 `
 
 const Buttons = styled.div`
@@ -28,16 +32,21 @@ const Buttons = styled.div`
 const ButtonLink = styled.a`
   padding: var(--small);
   outline: none;
-  border: 2px solid var(--black);
-  font-family: var(--body-text);
 
   // extract this in a button comp
   text-transform: uppercase;
   font-size: calc(.7rem + .1vw);
   font-weight: 900;
   
+  &:first-child {
+    background: var(--dark-grey);
+    color: white;
+  }
+
   &:last-child {
     margin-left: var(--small);
+    color: var(--red);
+    border: 2px solid var(--red);
   }
 `
 
@@ -49,8 +58,8 @@ const Hero = ({node}) => {
         <h1>{node.title}</h1>
         <p>{node.description.description}</p>
         <Buttons>
-          <ButtonLink to={node.linkForFirstButton}>{node.cta1}</ButtonLink>
-          <ButtonLink to={node.linkForSecondButton}>{node.cta2}</ButtonLink>
+          <ButtonLink to={node.linkForFirstButton}><h5>{node.cta1}</h5></ButtonLink>
+          <ButtonLink to={node.linkForSecondButton}><h5>{node.cta2}</h5></ButtonLink>
         </Buttons>
       </HeroText>
     </HeroContainer>
