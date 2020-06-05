@@ -1,5 +1,6 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
+import styled from 'styled-components';
 
 import Layout from "../components/layout";
 import Hero from "../components/hero";
@@ -10,10 +11,14 @@ import Classes from "../components/classes";
 import Events from "../components/events";
 import Gallery from "../components/gallery";
 
+const GreyContainer = styled.div`
+  background: var(--grey);
+`
+
 const HomePage = ({ data, location }) => {
   const events = data.allContentfulEvent.edges,
     classes = data.allContentfulClass.edges,
-    consultations = data.allContentfulConsultation.edges,
+    // consultations = data.allContentfulConsultation.edges,
     posts = data.allContentfulPost.edges,
     consultants = data.allContentfulConsultant.edges,
     gallery = data.allContentfulGallery.edges[0],
@@ -24,8 +29,10 @@ const HomePage = ({ data, location }) => {
       <Hero node={homePage.node} />
       <Consultants nodes={consultants} />
       <Posts nodes={posts} />
-      <Consultations nodes={consultations} />
-      <Classes nodes={classes} />
+      <Consultations />
+      <GreyContainer>
+        <Classes nodes={classes} />
+      </GreyContainer>
       <Events nodes={events} />
       <Gallery node={gallery.node} />
     </Layout>
@@ -71,7 +78,7 @@ export const homePageQuery = graphql`
           name
           slug
           photo {
-            fluid(maxWidth: 600) {
+            fluid(maxWidth: 400) {
               ...GatsbyContentfulFluid
             }
           }
@@ -100,34 +107,6 @@ export const homePageQuery = graphql`
       }
     }
 
-    allContentfulConsultation(limit: 5, sort: {
-      fields: [updatedAt],
-      order: DESC
-    },
-    filter: {
-    node_locale: {
-      eq: "bg"
-    }
-    }) {
-      edges {
-        node {
-          id
-          slug
-          title
-          description {
-            description
-          }
-          image {
-            file {
-              url
-              fileName
-              contentType
-            }
-          }
-        }
-      }
-    }
-
     allContentfulEvent(limit: 6, sort: {
       fields: [date],
       order: DESC
@@ -147,7 +126,6 @@ export const homePageQuery = graphql`
           }
           hosts
           date(formatString: "")
-          weekDay
           categories
         }
       }
@@ -161,7 +139,16 @@ export const homePageQuery = graphql`
       edges {
         node {
           id
+          slug
           title
+          start
+          end
+          price
+          length
+          categories
+          description {
+            description
+          }
         }
       }
     }
@@ -180,10 +167,8 @@ export const homePageQuery = graphql`
             description
           }
           images {
-            file {
-              url
-              fileName
-              contentType
+            fluid(maxWidth: 600) {
+              ...GatsbyContentfulFluid
             }
           }
         }

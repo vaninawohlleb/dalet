@@ -3,7 +3,8 @@ import { Link } from "gatsby";
 import styled,  { createGlobalStyle }  from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-@import url(‘https: //fonts.googleapis.com/css?family=Montserrat:400,900|Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Roboto&display=swap');
+
   :root {
     --tiny: .5rem;
     --small: 1rem;
@@ -21,13 +22,14 @@ const GlobalStyle = createGlobalStyle`
     --max-width-small: 15rem;
     --max-width-tiny: 12rem;
 
-    --red: #CF4647;
-    --light-gray: #F6F8FA;
-    --purple: #393E64;
-    --black: #0A0908;
+    --red: #D65556;
+    --yellow: #F4C578;
+    --green: #197278;
+    --black: #2A2C24;
+    --grey: #F9F9F9;
 
-    --heading-text: 'Work Sans', sans-serif;
-    --body-text: 'Poppins', sans-serif;
+    --heading-text: 'Montserrat', sans-serif;
+    --body-text: 'Roboto', sans-serif;
   }
 
   *,
@@ -37,9 +39,8 @@ const GlobalStyle = createGlobalStyle`
   }
   
   html {
-    font-size: 16px;
-    line-height: calc(1.1rem + .5vw);
-    font-weight: 400;
+    font-size: 100%;
+    // font-weight: 400;
     scroll-behavior: smooth;
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
@@ -66,30 +67,41 @@ const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4, .uppercase {
     font-family: var(--heading-text);
-    font-weight: 900;
+    font-weight: 800;
   }
 
   h1 {
-    font-size: calc(2.2rem + .1vw);
+    font-size: calc(2.4rem + .1vw);
     line-height: calc(3rem + .2vw);
+  }
+
+  h1, .uppercase {
     text-transform: uppercase;
   }
 
-  h2, h4, .uppercase {
-    text-transform: uppercase;
+  h2 {
+    font-size: calc(1.8rem + .1vw);
   }
 
   h3 {
-    font-size: calc(1.4rem + .1vw);
-    line-height: calc(1.5rem + .2vw);
-    color: var(--purple);
+    font-size: calc(1.3rem + .1vw);
+    margin: var(--tiny) 0;
   }
 
   h4, .uppercase {
-    font-size: calc(.9rem + .1vw);
+    font-size: calc(1rem + .1vw);
+  }
+
+  p {
+    margin: .2rem 0;
   }
 `;
 
+const Wrapper = styled.main`
+  display: block;
+  position: relative;
+  margin: 0 auto;
+`
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -98,7 +110,7 @@ const Layout = ({ location, title, children }) => {
     <div>
       <header></header>
       <GlobalStyle />
-      <main>{children}</main>
+      <Wrapper>{children}</Wrapper>
       <footer>
       </footer>
     </div>
