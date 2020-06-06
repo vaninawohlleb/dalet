@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
 
     --red: #D65556;
     --yellow: #F4C578;
-    --green: #197278;
+    --dark-grey: #403F4C;
     --black: #2A2C24;
     --grey: #F9F9F9;
 
@@ -75,7 +75,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: calc(3rem + .2vw);
   }
 
-  h1, .uppercase {
+  h1, h2, .uppercase {
     text-transform: uppercase;
   }
 
@@ -92,16 +92,27 @@ const GlobalStyle = createGlobalStyle`
     font-size: calc(1rem + .1vw);
   }
 
+  h5 {
+    font-family: var(--body-text);
+    font-size: .8rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    display: inline-flex;
+    margin: 0;
+    letter-spacing: .6px;
+  }
+
   p {
     margin: .2rem 0;
   }
 `;
 
-const Wrapper = styled.main`
+const Wrapper = styled.main `
   display: block;
   position: relative;
   margin: 0 auto;
 `
+
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`

@@ -1,8 +1,9 @@
-import React from "react";
+import React from "react"
 import { graphql } from "gatsby";
 import styled from 'styled-components';
 
 import Layout from "../components/layout";
+// import Navigation from "../components/nav";
 import Hero from "../components/hero";
 import Consultants from "../components/consultants";
 import Posts from "../components/posts";
@@ -10,9 +11,12 @@ import Consultations from "../components/consultations";
 import Classes from "../components/classes";
 import Events from "../components/events";
 import Gallery from "../components/gallery";
+import FeaturedEvent from "../components/featured";
 
 const GreyContainer = styled.div`
-  background: var(--grey);
+  background: var(--dark-grey);
+  padding: var(--big) 0;
+  border-bottom: 2px solid white;
 `
 
 const HomePage = ({ data, location }) => {
@@ -22,13 +26,18 @@ const HomePage = ({ data, location }) => {
     posts = data.allContentfulPost.edges,
     consultants = data.allContentfulConsultant.edges,
     gallery = data.allContentfulGallery.edges[0],
-    homePage = data.allContentfulPage.edges[0];
+    homePage = data.allContentfulPage.edges[0],
+    featuredEvent = events.find(({node}) => node.featuredEvent === true);
 
   return (
     <Layout location={location}>
+      {/* <Navigation /> */}
       <Hero node={homePage.node} />
       <Consultants nodes={consultants} />
       <Posts nodes={posts} />
+      <GreyContainer>
+        <FeaturedEvent node={featuredEvent.node} />
+      </GreyContainer>
       <Consultations />
       <GreyContainer>
         <Classes nodes={classes} />
@@ -78,7 +87,7 @@ export const homePageQuery = graphql`
           name
           slug
           photo {
-            fluid(maxWidth: 400) {
+            fluid(maxWidth: 600) {
               ...GatsbyContentfulFluid
             }
           }
@@ -127,6 +136,8 @@ export const homePageQuery = graphql`
           hosts
           date(formatString: "")
           categories
+          featuredEvent
+          repeatingEvent
         }
       }
     }

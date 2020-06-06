@@ -4,7 +4,7 @@ import Img from 'gatsby-image';
 
 const GalleryContainer = styled.div`
   // max-width: var(--max-width-large);
-  // padding: var(--big);
+  padding: var(--huge) 0;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 50vw);
@@ -14,17 +14,18 @@ const GalleryContainer = styled.div`
 const ButtonLink = styled.button`
   padding: var(--small);
   outline: none;
-  border: 2px solid var(--black);
-  font-family: var(--heading-text);
-  text-transform: uppercase;
-  font-size: calc(.7rem + .1vw);
-  font-weight: 900;
+  border: 2px solid var(--red);
+  color: var(--red);
   margin: var(--medium) 0;
-
+  background: transparent;
 `
 
 const GalleryText = styled.div`
   padding: var(--huge);
+
+  h2 {
+    color: var(--red);
+  }
 `
 
 const Gallery = ({node}) => {
@@ -33,7 +34,7 @@ const Gallery = ({node}) => {
       <GalleryText>
         <h2>{node.title}</h2>
         <p>{node.description.description}</p>
-        <ButtonLink>Направете запитване</ButtonLink>
+        <ButtonLink><h5>Направете запитване</h5></ButtonLink>
       </GalleryText>
       <Img fluid={node.images[0].fluid}></Img>
       <Img fluid={node.images[1].fluid}></Img>

@@ -15,10 +15,12 @@ const PostsText = styled.div`
   h2 {
     text-transform: uppercase;
     margin: var(--tiny) 0;
+    color: var(--dark-grey);
   }
 
   a {
     font-family: var(--body-text);
+    color: var(--red);
   }
 `
 
@@ -29,6 +31,10 @@ const PostsContainer = styled.ul `
   display: grid;
   grid-template-columns: repeat(2, 38.5vw);
   grid-column-gap: var(--medium);
+
+  h3 {
+    color: var(--red);
+  }
 `
 const Posts = ({nodes}) => {
   return (
