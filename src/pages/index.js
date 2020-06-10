@@ -27,6 +27,7 @@ const HomePage = ({ data, location }) => {
     consultants = data.allContentfulConsultant.edges,
     gallery = data.allContentfulGallery.edges[0],
     homePage = data.allContentfulPage.edges[0],
+    // TODO: Always return 1 and always return the newest
     featuredEvent = events.find(({node}) => node.featuredEvent === true);
 
   return (

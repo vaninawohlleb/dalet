@@ -38,19 +38,6 @@ const EventInfo = styled.div`
     margin: .5rem 0;
   }
 
-  .dotted {
-    &:last-child {
-      &:before {
-        content: "•";
-        padding: 10px;
-      }
-
-      &:after {
-        content: "•";
-        padding: 10px;
-      }
-    }
-  }
   &.meditation {
     h3, .color {
       color: var(--yellow);
