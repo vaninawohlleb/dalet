@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby";
 import styled,  { createGlobalStyle }  from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -16,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     --hugest: 8rem;
     --max: 10rem;
 
-    --max-width-large: 73rem;
+    --max-width-large: 90rem;
     --max-width-big: 61.50rem;
     --max-width-mid: 50rem;
     --max-width-small: 15rem;
@@ -63,6 +62,7 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     all: initial;
+    cursor: pointer;
   }
 
   h1, h2, h3, h4, .uppercase {
@@ -105,6 +105,27 @@ const GlobalStyle = createGlobalStyle`
   p {
     margin: .2rem 0;
   }
+
+  .dotted {
+    &:last-of-type {
+      &:before {
+        content: "•";
+        padding: 10px;
+      }
+
+      &:after {
+        content: "•";
+        padding: 10px;
+      }
+    }
+
+    &.middle {
+      &:before {
+        content: "•";
+        padding: 10px;
+      }
+    }    
+  }
 `;
 
 const Wrapper = styled.main `
@@ -122,8 +143,7 @@ const Layout = ({ location, title, children }) => {
       <header></header>
       <GlobalStyle />
       <Wrapper>{children}</Wrapper>
-      <footer>
-      </footer>
+      <footer></footer>
     </div>
   )
 }
