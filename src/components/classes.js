@@ -49,7 +49,7 @@ const Class = styled.li`
 
 const Classes = ({nodes}) => {
   return (
-    <ClassesContainer>
+    <ClassesContainer id="classes">
       {nodes.map(({node}) => {
         const start_date = new Date(node.start),
           end_date = new Date(node.end)
