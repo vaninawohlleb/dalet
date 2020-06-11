@@ -124,12 +124,13 @@ const Consultant = ({ data, location }) => {
       </HeaderText>
     </ConsultantHeader>
     <ConsultantBody>
+      {consultant.classes &&
       <ClassesWrapper>
         <SubHeader>
           <ClassImg />
         </SubHeader>
         <SubInfo>
-           <h2 className="heading-class">Класове</h2>
+          <h2 className="heading-class">Класове</h2>
           <ul>
             {consultant.classes.map((consultantClass) => {
               // TODO: Do this in a function
@@ -163,6 +164,7 @@ const Consultant = ({ data, location }) => {
           </ul>
         </SubInfo>
       </ClassesWrapper>
+      }
       <ConsultationsWrapper>
         <SubHeader>
           <ConsultationImg />

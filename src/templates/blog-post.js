@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../components/layout";
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Body from "../components/body";
 
 const PostHeader = styled.section`
@@ -15,6 +15,18 @@ const PostHeader = styled.section`
   justify-content: center;
   align-items: center;
   background: var(--grey);
+
+  h2, a {
+    color: var(--red);
+  }
+
+  a {
+    font-family: var(--body-text);
+
+    &:visited {
+      color: var(--red);
+    }
+  }
 `
 
 const BodyWrapper = styled.section`
@@ -31,8 +43,10 @@ const BlogPost = ({ data, location }) => {
       <Img fluid={post.image.fluid}/>
       <HeaderText>
         <h2>{post.title}</h2>
-        <span className="dotted">{post.categories[0]}</span>
-        <span className="dotted">{post.author_ref.name}</span>
+        <span className="dotted">
+          <Link to={`/consultant/${post.author_ref.slug}`}>{post.author_ref.name}</Link>
+        </span>
+        <span className="dotted">{post.createdAt}</span>
       </HeaderText>
     </PostHeader>
     <BodyWrapper>
@@ -50,6 +64,7 @@ query PostQuery($slug: String!) {
     id
     title
     categories
+    createdAt(locale: "BG", formatString: "mm MMMM")
     author_ref {
       name
       slug

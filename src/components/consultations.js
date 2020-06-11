@@ -15,6 +15,13 @@ const ConsultationContainer = styled.ul`
 const Buttons = styled.div`
 `
 const Consultation = styled.li`
+  a {
+    color: var(--red);
+
+    &:visited {
+      color: var(--red);
+    }
+  }
   .gatsby-image-wrapper {
     max-height: 160px;
   }
