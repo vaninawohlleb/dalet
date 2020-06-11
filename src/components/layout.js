@@ -1,5 +1,6 @@
 import React from "react"
 import styled,  { createGlobalStyle }  from 'styled-components';
+import Navigation from "../components/navigation";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Roboto&display=swap');
@@ -140,8 +141,10 @@ const Layout = ({ location, title, children }) => {
 
   return (
     <div>
-      <header></header>
       <GlobalStyle />
+      <header>
+        <Navigation location={location} children={children}/>
+      </header>
       <Wrapper>{children}</Wrapper>
       <footer></footer>
     </div>

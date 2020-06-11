@@ -3,7 +3,6 @@ import { graphql } from "gatsby";
 import styled from 'styled-components';
 
 import Layout from "../components/layout";
-// import Navigation from "../components/nav";
 import Hero from "../components/hero";
 import Consultants from "../components/consultants";
 import Posts from "../components/posts";
@@ -27,12 +26,9 @@ const HomePage = ({ data, location }) => {
     consultants = data.allContentfulConsultant.edges,
     gallery = data.allContentfulGallery.edges[0],
     homePage = data.allContentfulPage.edges[0],
-    // TODO: Always return 1 and always return the newest
     featuredEvent = events.find(({node}) => node.featuredEvent === true);
-    console.log(events)
   return (
     <Layout location={location}>
-      {/* <Navigation /> */}
       <Hero node={homePage.node} />
       <Consultants nodes={consultants} />
       <Posts nodes={posts} />
