@@ -4,6 +4,7 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { graphql, Link } from "gatsby";
 import Body from "../components/body";
+import TextModule from "../components/text-module";
 
 const Header = styled.section`
   max-width: var(--max-width-large);
@@ -14,10 +15,16 @@ const Header = styled.section`
   grid-column-gap: var(--big);
   justify-content: center;
   align-items: flex-start;
-  background: var(--grey);
+  background: var(--dark-grey);
+  color: white;
 `
 
-const HeaderText = styled.div``
+const HeaderText = styled.div`
+  a {
+    color: var(--yellow);
+    font-family: var(--body-text);
+  }
+`
 
 const DateContainer = styled.h1`
   font-family: var(--heading-text);
@@ -25,10 +32,12 @@ const DateContainer = styled.h1`
   font-size: 5rem;
   margin: 0;
 `
+
 const DateWrapper = styled.hgroup `
   display: grid;
   grid-template-columns: 20% 70%;
-  margin: var(--medium) 0;
+  margin: 2px 0 var(--medium) 0;
+  color: var(--yellow);
 `
 const BodyWrapper = styled.section``
 
@@ -54,27 +63,39 @@ const Event = ({ data, location }) => {
           <DateContainer>{splitDayMonth[0]}</DateContainer>
           <h3 className="uppercase">{splitDayMonth[1]}, {splitLocaleDate[0]}</h3>
         </DateWrapper>
-        <h5 className="uppercase">Начало: {date.getHours()}:{date.getMinutes()}0</h5>
         <h2>{event.title}</h2>
+        <div>
+          <span className="dotted">Начало</span>
+          <span className="dotted">{date.getHours()}:{date.getMinutes()}0</span>
+        </div>
         {event.hosts && 
-        <p>Водещи:
-        {event.hosts.map((host, i) => {
+        <div>
+          <span>Водещи</span>
+          {event.hosts.map((host, i) => {
             return (
               <span key={i} className="dotted">{host}</span>
             )
           })}
-        </p>
+        </div>
         }
-        {/* <p>Цена: {event.price}</p> */}
+        <div>
+          <span className="dotted">Цена</span>
+          <span className="dotted">{event.priceDetails}</span>
+        </div>
+          {event.class && 
+          <p>
+            <span className="dotted">Събитието е част от</span>
+            <span className="dotted">
+              <Link to={`/class/${event.class.slug}`}>{event.class.title}</Link>
+              </span>
+          </p>
+          }
       </HeaderText>
     </Header>
     <BodyWrapper>
       <Body node={event.description} />
       {event.importantInfo &&
-        <article>
-          <h4>{event.importantInfo[0].title}</h4>
-          <p dangerouslySetInnerHTML={{ __html:event.importantInfo[0].childContentfulTextModuleDescriptionTextNode.childMarkdownRemark.html }} />
-        </article>
+        <TextModule node={event.importantInfo[0]} />
       }
     </BodyWrapper>
   </Layout>
@@ -91,6 +112,12 @@ query EventQuery($slug: String!) {
     id
     slug
     title
+    priceDetails
+    repeatingEvent
+    class {
+      slug
+      title
+    }
     description {
       childMarkdownRemark {
         html
@@ -103,7 +130,7 @@ query EventQuery($slug: String!) {
     }
     importantInfo {
       title
-      childContentfulTextModuleDescriptionTextNode {
+      description {
         childMarkdownRemark {
           html
         }

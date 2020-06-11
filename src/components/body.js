@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 
 const BodyContainer = styled.div`
   max-width: var(--max-width-big);
@@ -10,6 +9,7 @@ const BodyContainer = styled.div`
 
   img {
     max-width: 100%;
+    margin: var(--small) auto;
   }
 `
 
