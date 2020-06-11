@@ -29,7 +29,7 @@ const Buttons = styled.div`
   margin: var(--big) auto;
 `
 
-const ButtonLink = styled.a`
+const ButtonH5 = styled.h5`
   padding: var(--small);
   outline: none;
 
@@ -38,12 +38,12 @@ const ButtonLink = styled.a`
   font-size: calc(.7rem + .1vw);
   font-weight: 900;
   
-  &:first-child {
+  &.consultations {
     background: var(--dark-grey);
     color: white;
   }
 
-  &:last-child {
+  &.events {
     margin-left: var(--small);
     color: var(--red);
     border: 2px solid var(--red);
@@ -58,8 +58,12 @@ const Hero = ({node}) => {
         <h1>{node.title}</h1>
         <p>{node.description.description}</p>
         <Buttons>
-          <ButtonLink to={node.linkForFirstButton}><h5>{node.cta1}</h5></ButtonLink>
-          <ButtonLink to={node.linkForSecondButton}><h5>{node.cta2}</h5></ButtonLink>
+          <Link to="#consultations">
+            <ButtonH5 className="consultations">{node.cta1}</ButtonH5>
+          </Link>
+          <Link to="#events">
+            <ButtonH5 className="events">{node.cta2}</ButtonH5>
+          </Link>
         </Buttons>
       </HeroText>
     </HeroContainer>

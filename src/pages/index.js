@@ -29,7 +29,7 @@ const HomePage = ({ data, location }) => {
     homePage = data.allContentfulPage.edges[0],
     // TODO: Always return 1 and always return the newest
     featuredEvent = events.find(({node}) => node.featuredEvent === true);
-
+    console.log(events)
   return (
     <Layout location={location}>
       {/* <Navigation /> */}
@@ -98,7 +98,7 @@ export const homePageQuery = graphql`
 
     allContentfulPost(limit: 2, sort: {
       fields: [updatedAt],
-      order: DESC
+      order: ASC
     },
     filter: {
     node_locale: {
@@ -117,9 +117,10 @@ export const homePageQuery = graphql`
       }
     }
 
-    allContentfulEvent(limit: 6, sort: {
+    allContentfulEvent(limit: 6, 
+    sort: {
       fields: [date],
-      order: DESC
+      order: ASC
     },
     filter: {
     node_locale: {
@@ -155,7 +156,7 @@ export const homePageQuery = graphql`
           title
           start
           end
-          price
+          priceDetails
           length
           categories
           description {

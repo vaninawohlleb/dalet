@@ -1,5 +1,5 @@
 import React,  { useState } from "react";
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 
@@ -42,6 +42,10 @@ const Consultations = () => {
             description {
               description
             }
+            consultant {
+              slug
+              id
+            }
             image {
               fluid(maxWidth: 600) {
                 ...GatsbyContentfulFluid
@@ -67,7 +71,7 @@ const Consultations = () => {
   // const { node } = allContentfulConsultation.edges[index];
 
   return (
-    <ConsultationContainer>
+    <ConsultationContainer id="consultations">
       {/* <Buttons>
         <button onClick={() => handlePrevious()}>Previous</button>
         <button onClick={() => handleNext()}>Next</button>
@@ -75,9 +79,11 @@ const Consultations = () => {
       <Slide key={node.id}> */}
         {allContentfulConsultation.edges.map(({node}) => {
           return (
-            <Consultation key={node.id}>
-              <Img fluid={node.image.fluid}></Img>
-              <h4>{node.title}</h4>
+            <Consultation key={node.id}> 
+              <Link to={`/consultant/${node.consultant.slug}#${node.slug}`} >
+                <Img fluid={node.image.fluid}></Img>
+                <h4>{node.title}</h4>
+              </Link>
               <p>{node.description.description.slice(0, 300)}</p>
             </Consultation>
           )

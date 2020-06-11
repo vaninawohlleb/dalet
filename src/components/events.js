@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import { Link } from "gatsby";
 
 const CalendarContainer = styled.ul`
   padding: var(--big);
@@ -64,8 +65,9 @@ const EventDay = styled.div `
 `
 const ButtonContainer = styled.div`
   display: flex;
+  justify-content: center;
 `
-const ButtonLink = styled.a `
+const ButtonH5 = styled.h5`
   padding: var(--small);
   outline: none;
   border: 2px solid white;
@@ -75,7 +77,7 @@ const ButtonLink = styled.a `
 
 const Events = ({nodes}) => {
   return (
-    <CalendarContainer> {
+    <CalendarContainer id="events"> {
       nodes.map(({node}) => {
         const date = new Date(node.date),
           dateOptions = {
@@ -97,7 +99,7 @@ const Events = ({nodes}) => {
               <EventDetails>
                 <img src={node.categories ? `/img/${node.categories[0]}.svg` : ''} />
                 <EventInfo className = {node.categories ? node.categories[0] : ''}>
-                  <h3>{node.title}</h3>
+                  <Link to={`event/${node.slug}`}><h3>{node.title}</h3></Link>
                   {/* TODO: Why getMinutes shows just the first digit */}
                   <p className="uppercase" >{date.getHours()}:{date.getMinutes()}0</p>
                   <div className="color"><h5>Водещи: </h5> {
@@ -116,7 +118,7 @@ const Events = ({nodes}) => {
           )
         })}
       <ButtonContainer>
-        <ButtonLink to="/"><h5>Виж всички събития</h5></ButtonLink>
+        <Link to="/events"><ButtonH5>Виж всички събития</ButtonH5></Link>
       </ButtonContainer>
     </CalendarContainer>
   )

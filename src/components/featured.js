@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import FeaturedImg from './featured-image'
+import {Link } from "gatsby";
 
 const FeaturedContainer = styled.div`
   max-width: var(--max-width-large);
@@ -13,7 +14,7 @@ const FeaturedContainer = styled.div`
   align-items: center;
 `
 // extract this as a button
-const ButtonLink = styled.button`
+const ButtonH5 = styled.h5`
   padding: var(--small);
   outline: none;
   border: 2px solid var(--yellow);
@@ -48,7 +49,9 @@ const Featured = ({node}) => {
         <FeaturedDay>{localeDate}</FeaturedDay> от <FeaturedDay>{date.getHours()}:{date.getMinutes()}0</FeaturedDay>
         <h2>{node.title}</h2>
         <p>{node.description.description.slice(0, 200)}</p>
-        <ButtonLink><h5>Запазете място</h5></ButtonLink>
+        <Link to={`/event/${node.slug}`}>
+          <ButtonH5>Виж повече</ButtonH5>
+        </Link>
       </FeaturedText>
       <FeaturedImg />
     </FeaturedContainer>

@@ -41,7 +41,7 @@ const Posts = ({nodes}) => {
     <PostsWrapper>
       <PostsText>
         <h2>Последни новини, съвети и предсказания</h2>
-        <Link to="/">Виж всички новини</Link>
+        <Link to="/posts">Виж всички новини</Link>
       </PostsText>
       <PostsContainer>
         {nodes.map(({node}) => {
