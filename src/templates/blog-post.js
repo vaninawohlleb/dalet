@@ -3,6 +3,7 @@ import Layout from "../components/layout";
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { graphql } from "gatsby";
+import Body from "../components/body";
 
 const PostHeader = styled.section`
   max-width: var(--max-width-large);
@@ -16,11 +17,7 @@ const PostHeader = styled.section`
   background: var(--grey);
 `
 
-const PostBody = styled.section`
-  max-width: var(--max-width-mid);
-  padding: var(--small) var(--huge);
-  margin: 0 auto;
-  line-height: 1.5;
+const BodyWrapper = styled.section`
 `
 const HeaderText = styled.hgroup``
 
@@ -38,9 +35,9 @@ const BlogPost = ({ data, location }) => {
         <span className="dotted">{post.author_ref.name}</span>
       </HeaderText>
     </PostHeader>
-    <PostBody>
-      {post.description.childMarkdownRemark.rawMarkdownBody}
-    </PostBody>
+    <BodyWrapper>
+      <Body node={post.description} />
+    </BodyWrapper>
   </Layout>
   )
 }
@@ -59,7 +56,7 @@ query PostQuery($slug: String!) {
     }
     description {
       childMarkdownRemark {
-        rawMarkdownBody
+        html
       }
     }
     image {
