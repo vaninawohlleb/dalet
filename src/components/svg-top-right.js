@@ -20,6 +20,7 @@ const StyledSvgTopRight = styled.svg`
   right: -4%;
   top: -10%;
   width: 25%;
+  opacity: .6;
   fill: transparent;
   animation: 2s ${stroke} 1s linear;
   animation-iteration-count: 1;

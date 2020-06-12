@@ -22,6 +22,7 @@ const StyledSvgTopLeft = styled.svg `
   top: 0;
   left: -2%;
   width: 23%;
+  opacity: .7;
   transform: rotate(10deg);
   fill: transparent;
   animation: 2.5s ${stroke} linear;
