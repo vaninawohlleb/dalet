@@ -11,7 +11,7 @@ const stroke = keyframes `
   50%, 100% {
     stroke: #fff;
     stroke-dashoffset: 0;
-    stroke-width: 1px;
+    stroke-width: 2px;
   }
 `
 
@@ -19,8 +19,7 @@ const StyledSvgTopRight = styled.svg`
   position: absolute;
   right: -4%;
   top: -10%;
-  width: 20%;
-  opacity: 1;
+  width: 25%;
   fill: transparent;
   animation: 2s ${stroke} 1s linear;
   animation-iteration-count: 1;

@@ -112,10 +112,10 @@ const Consultant = ({ data, location }) => {
               <span key={i}>
                 {contactField.contactLink
                 ? <a className="dotted" href={contactField.contactLink} target="_blank" rel="noopener noreferrer">{contactField.contactType}</a>
-                : <span className="dotted">{contactField.contactType}</span>
+                : null
                 }
                 {contactField.contactDetail &&
-                  <span>: {contactField.contactDetail}</span>
+                  <span>{contactField.contactDetail}</span>
                 }
               </span>
             )
@@ -176,7 +176,7 @@ const Consultant = ({ data, location }) => {
               <Consultation key={consultation.id} id={consultation.slug}>
                 <p className = "uppercase">{consultation.title}</p>
                 <span className="dotted">Продължителност: {consultation.length}</span>
-                <span className="dotted">Цена: {consultation.price}</span>
+                <span className="dotted">Цена: {consultation.priceDetails}</span>
                 <p>{consultation.description.childMarkdownRemark.rawMarkdownBody}</p>
                 {consultation.contact &&
                 <ContactModule>
@@ -185,10 +185,10 @@ const Consultant = ({ data, location }) => {
                       <span key={i} >
                         {contactField.contactLink
                         ? <a className="dotted" href={contactField.contactLink}>{contactField.contactType}</a>
-                        : <span>{contactField.contactType}</span>
+                        : null
                         }
                         {contactField.contactDetail &&
-                          <span>: {contactField.contactDetail}</span>
+                          <span>{contactField.contactDetail}</span>
                         }
                       </span>
                     )
@@ -252,7 +252,7 @@ query ConsultantQuery($slug: String!) {
         }
       }
       length
-      price
+      priceDetails
       title
       slug
       contact {
