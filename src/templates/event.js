@@ -66,11 +66,11 @@ const Event = ({ data, location }) => {
         <h2>{event.title}</h2>
         <div>
           <span className="dotted">Начало</span>
-          <span className="dotted">{date.getHours()}:{date.getMinutes()}0</span>
+          <span className="dotted">{date.getHours()}:{date.getMinutes()}</span>
         </div>
         {event.hosts && 
         <div>
-          <span>Водещи</span>
+          <span className="dotted">Водещи</span>
           {event.hosts.map((host, i) => {
             return (
               <span key={i} className="dotted">{host}</span>
@@ -114,10 +114,7 @@ query EventQuery($slug: String!) {
     title
     priceDetails
     repeatingEvent
-    class {
-      slug
-      title
-    }
+
     description {
       childMarkdownRemark {
         html

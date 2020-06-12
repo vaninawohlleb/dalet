@@ -6,7 +6,7 @@ const NavigationContainer = styled.nav `
   // max-width: var(--max-width-big);
   padding: var(--medium);
   display: grid;
-  grid-template-columns: 40% 14% 40%;
+  grid-template-columns: 40% 17% 40%;
   grid-column-gap: var(--medium);
   justify-items: center;
   align-items: center;

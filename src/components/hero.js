@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 import SvgTopLeft from "./svg-top-left";
-import SvgLeft from "./svg-left";
 import SvgRight from "./svg-right";
 import SvgTopRight from "./svg-top-right";
 
@@ -46,10 +45,11 @@ const ButtonH5 = styled.h5`
   
   &.consultations {
     color: white;
+    border: 2px solid var(--green);
 
     background: linear-gradient(to right, var(--dark-grey), var(--dark-grey) 50%, var(--green) 50%);
     background-clip: text;
-    background-size: 200% 100%;
+    background-size: 202% 100%;
     background-position: 100%;
     transition: background-position 275ms ease;
 
@@ -61,6 +61,7 @@ const ButtonH5 = styled.h5`
   &.events {
     margin-left: var(--small);
     color: white;
+    border: 2px solid var(--green);
 
     background: linear-gradient(to right, var(--green), var(--green) 50%, var(--dark-grey) 50%);
     background-clip: text;
@@ -78,7 +79,6 @@ const Hero = ({node}) => {
   return (
     <HeroContainer key={node.id}>
       <SvgTopLeft />
-      <SvgLeft />
       <SvgTopRight />
       <SvgRight />
       <HeroText>

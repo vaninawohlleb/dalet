@@ -119,7 +119,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .dotted {
-    &:last-of-type {
+    &:nth-child(odd) {
       &:before {
         content: "•";
         padding: 10px;
