@@ -6,14 +6,12 @@ const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: "Montserrat";
     src: url("/fonts/Montserrat/Montserrat-Black.ttf");
-    font-display: swap;
     font-weight: 900;
   }
 
   @font-face {
     font-family: "Roboto";
     src: url("/fonts/Roboto/Roboto-Regular.ttf");
-    font-display: swap;
     font-weight: 400;
   }
 

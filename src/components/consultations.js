@@ -64,7 +64,10 @@ const Consultations = () => {
             description {
               description
             }
-  
+            consultant_1 {
+              slug
+              name
+            }
             image {
               fluid(maxWidth: 600) {
                 ...GatsbyContentfulFluid
@@ -99,12 +102,10 @@ const Consultations = () => {
         {allContentfulConsultation.edges.map(({node}) => {
           return (
             <Consultation key={node.id}> 
-              {node.consultant &&
-                <Link to={`/consultant/${node.consultant.slug}#${node.slug}`} >
-                  <Img fluid={node.image.fluid}></Img>
-                  <h4>{node.title}</h4>
-                </Link>
-              }
+              <Link to={`/consultant/${node.consultant_1.slug}#${node.slug}`} >
+                <Img fluid={node.image.fluid}></Img>
+                <h4>{node.title}</h4>
+              </Link>
               <p>{node.description.description.slice(0, 300)}</p>
             </Consultation>
           )
