@@ -34,10 +34,10 @@ const Class = styled.li`
   }
 
   &.taro {
-    color: var(--red);
+    color: var(--green);
 
     h3, a {
-      color: var(--red);
+      color: var(--green);
     }
   }
   

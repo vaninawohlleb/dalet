@@ -54,11 +54,11 @@ const EventContainer = styled.li`
 
   &.taro {
     h3, .color {
-      color: var(--red);
+      color: var(--green);
     }
 
     &:after {
-      background: var(--red);
+      background: var(--green);
     }
   }
 

@@ -20,7 +20,7 @@ const PostsText = styled.div`
 
   a {
     font-family: var(--body-text);
-    color: var(--red);
+    color: var(--green);
   }
 `
 
@@ -33,9 +33,9 @@ const PostsContainer = styled.ul `
   grid-column-gap: var(--medium);
 
   h3 {
-    color: var(--red);
+    color: var(--green);
 
-    background: linear-gradient(to right, var(--dark-grey), var(--dark-grey) 50%, var(--red) 50%);
+    background: linear-gradient(to right, var(--dark-grey), var(--dark-grey) 50%, var(--green) 50%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

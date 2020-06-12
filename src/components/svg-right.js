@@ -24,11 +24,12 @@ const stroke = keyframes `
 const StyledSvgRight = styled.svg`
   position: absolute;
   right: 0%;
-  top: 5%;
-  width: 20%;
-  opacity: .8;
+  top: 2%;
+  width: 24%;
+  opacity: .7;
   fill: transparent;
-  animation: 6s ${stroke} linear;
+  transform: rotate(5deg);
+  animation: 6s ${stroke} 1.5s linear;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   `

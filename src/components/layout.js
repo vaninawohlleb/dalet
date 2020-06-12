@@ -34,9 +34,10 @@ const GlobalStyle = createGlobalStyle`
 
     --red: #D65556;
     --yellow: #F4C578;
-    --dark-grey: #403F4C;
+    --dark-grey: #282F44;
     --black: #2A2C24;
     --grey: #F9F9F9;
+    --green: #197278;
 
     --heading-text: 'Montserrat', sans-serif;
     --body-text: 'Roboto', sans-serif;
@@ -143,9 +144,9 @@ const Wrapper = styled.main `
   display: block;
   position: relative;
   margin: 0 auto;
-  background: url("/img/natal-card-1.svg") no-repeat;
-  background-size: 113%;
-  background-position: 21% -11%;
+  // background: url("/img/natal-card-1.svg") no-repeat;
+  // background-size: 113%;
+  // background-position: 21% -11%;
 `
 
 
@@ -156,7 +157,7 @@ const Layout = ({ location, title, children }) => {
     <div>
       <GlobalStyle />
       <header>
-        <Navigation location={location} children={children}/>
+        <Navigation root={rootPath} children={children}/>
       </header>
       <Wrapper>{children}</Wrapper>
       <footer></footer>
