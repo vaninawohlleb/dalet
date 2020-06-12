@@ -21,7 +21,7 @@ const ButtonH5 = styled.h5`
   color: white;
   margin: var(--medium) 0;
   
-  background: linear-gradient(to right, var(--dark-grey), var(--dark-grey) 50%, var(--red) 50%);
+  background: linear-gradient(to right, var(--dark-grey), var(--dark-grey) 50%, var(--green) 50%);
   background-clip: text;
   background-size: 200% 100%;
   background-position: 100%;
@@ -36,7 +36,7 @@ const GalleryText = styled.div`
   padding: var(--huge);
 
   h2 {
-    color: var(--red);
+    color: var(--green);
   }
 `
 

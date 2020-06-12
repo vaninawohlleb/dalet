@@ -6,46 +6,61 @@ const NavigationContainer = styled.nav `
   // max-width: var(--max-width-big);
   padding: var(--medium);
   display: grid;
-  grid-template-columns: 20% 50%;
-  grid-column-gap: var(--huge);
-  justify-content: space-between;
-`
+  grid-template-columns: 40% 14% 40%;
+  grid-column-gap: var(--medium);
+  justify-items: center;
+  align-items: center;
+  background: var(--dark-grey);
 
-const Logo = styled.div`
   a {
-    color: var(--black);
+    color: white;
     font-family: var(--heading-text);
     text-transform: uppercase;
     font-weight: 800;
-  }
-`
-
-const Nav = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(5, auto);
-  justify-items: self-end;
-  
-  a {
-    color: var(--black);
-    font-family: var(--body-text);
-    text-transform: uppercase;
     font-size: .9rem;
 
     &:visited {
-      color: var(--black)
+      color: white;
     }
   }
 `
 
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
 
-const Navigation = ({location, children}) => {
-  console.log(children)
+  a {
+    text-align: center;
+
+    img {
+      max-width: 30%;
+    }
+  }
+`
+
+const NavLeft = styled.ul`
+  display: flex;
+
+  li {
+    margin: 0 var(--small);
+  }
+  
+`
+
+const NavRight = styled.ul`
+  display: flex;
+
+  li {
+    margin: 0 var(--small);
+  }
+`
+
+
+const Navigation = ({root, children}) => {
+  console.log(root)
   return (
     <NavigationContainer>
-      <Logo>
-        <Link to="/">Далет</Link>
-      </Logo>
-      <Nav>
+      <NavLeft>
         <li>
           <Link to="/events">Събития</Link>
         </li>
@@ -55,13 +70,21 @@ const Navigation = ({location, children}) => {
         <li>
           <Link to="#classes">Класове</Link>
         </li>
+      </NavLeft>
+      <Logo>
+         <Link to={root}>
+          <img src="/img/dalet-logo.png" />
+        </Link>
+      </Logo>
+      <NavRight>
         <li>
           <Link to="#consultations">Консултации</Link>
         </li>
         <li>
           <Link to="/events">Контакт</Link>
         </li>
-      </Nav>
+      </NavRight>
+        
     </NavigationContainer>
   )
 }

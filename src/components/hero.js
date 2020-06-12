@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
+
+import SvgTopLeft from "./svg-top-left";
 import SvgLeft from "./svg-left";
 import SvgRight from "./svg-right";
+import SvgTopRight from "./svg-top-right";
 
 const HeroContainer = styled.div`
   margin: 0 auto;
@@ -10,7 +13,8 @@ const HeroContainer = styled.div`
   display: grid;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 82vh;
+  background: var(--dark-grey);
 `
 
 const HeroText = styled.div`
@@ -20,9 +24,10 @@ const HeroText = styled.div`
   align-self: center;
   padding: var(--small);
   max-width: var(--max-width-mid);
+  color: white;
 
   h1 {
-    color: var(--red);
+    color: var(--yellow);
   }
 `
 
@@ -42,7 +47,7 @@ const ButtonH5 = styled.h5`
   &.consultations {
     color: white;
 
-    background: linear-gradient(to right, var(--dark-grey), var(--dark-grey) 50%, var(--red) 50%);
+    background: linear-gradient(to right, var(--dark-grey), var(--dark-grey) 50%, var(--green) 50%);
     background-clip: text;
     background-size: 200% 100%;
     background-position: 100%;
@@ -57,10 +62,10 @@ const ButtonH5 = styled.h5`
     margin-left: var(--small);
     color: white;
 
-    background: linear-gradient(to right, var(--red), var(--red) 50%, var(--dark-grey) 50%);
+    background: linear-gradient(to right, var(--green), var(--green) 50%, var(--dark-grey) 50%);
     background-clip: text;
     background-size: 200% 100%;
-    background-position: 100%;
+    background-position: 100.2%;
     transition: background-position 275ms ease;
 
     &:hover {
@@ -72,7 +77,9 @@ const ButtonH5 = styled.h5`
 const Hero = ({node}) => {
   return (
     <HeroContainer key={node.id}>
+      <SvgTopLeft />
       <SvgLeft />
+      <SvgTopRight />
       <SvgRight />
       <HeroText>
         <h1>{node.title}</h1>
