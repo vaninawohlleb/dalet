@@ -17,6 +17,19 @@ const Consultant = styled.li`
 
   .gatsby-image-wrapper {
     max-height: 40vh;
+
+    img {
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      transform: scale(1);
+      transition: all .5s !important;
+
+      &:hover {
+        transform: scale(1.2);
+        transition: all .5s !important;
+      }
+    }
   }
 
   h5 {

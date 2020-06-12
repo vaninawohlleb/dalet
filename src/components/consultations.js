@@ -8,20 +8,35 @@ const ConsultationContainer = styled.ul`
   display: grid;
   padding: var(--big);
   margin: 0 auto;
-  grid-template-columns: repeat(4, 18.5vw);
+  grid-template-columns: repeat(4, 19.1vw);
   grid-column-gap: var(--medium);
   justify-content: center;
 `
 const Buttons = styled.div`
 `
 const Consultation = styled.li`
-  a {
-    color: var(--red);
+  padding: var(--small);
+  width: 100%;
+  height: 100%;
 
-    &:visited {
-      color: var(--red);
+  &:hover {
+    h4 {
+      background-position: 0 100%;
     }
   }
+
+  h4 {
+    color: var(--red);
+
+    background: linear-gradient(to right, var(--dark-grey), var(--dark-grey) 50%, var(--red) 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 320ms ease;
+  }
+
   .gatsby-image-wrapper {
     max-height: 160px;
   }

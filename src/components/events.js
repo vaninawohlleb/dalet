@@ -3,19 +3,65 @@ import styled from 'styled-components';
 import { Link } from "gatsby";
 
 const CalendarContainer = styled.ul`
-  padding: var(--big);
+  padding: var(--big) 0;
   margin: 0 auto;
   background: var(--dark-grey);
   color: white;
 `
 
 const EventContainer = styled.li`
+  position: relative;
   display: grid;
-  grid-template-columns: 20vw 73vw;
+  grid-template-columns: 20vw 80vw;
   grid-column-gap: var(--medium);
   justify-content: center;
-  padding: var(--big) 0;
-  // border-top: 4px solid var(--yellow);
+  padding: var(--big);
+  transition: all .5s;
+  transform: translateX(5%);
+
+  &:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: var(--big);
+    height: 100%;
+  }
+
+  &:hover {
+    transition: all .5s;
+    transform: translateX(0%);
+  }
+
+  &.meditation {
+    h3, .color {
+      color: var(--yellow);
+    }
+
+    &:after {
+      background: var(--yellow);
+    }
+  }
+
+  &.astrology {
+    h3, .color {
+      color: white;
+    }
+
+    &:after {
+      background: white;
+    }
+  }
+
+  &.taro {
+    h3, .color {
+      color: var(--red);
+    }
+
+    &:after {
+      background: var(--red);
+    }
+  }
+
 `
 
 const EventDate = styled.div`
@@ -29,32 +75,20 @@ const EventDetails = styled.div`
   img {
     align-self: flex-start;
     margin-top: var(--tiny);
+    min-width: 4.5vw;
   }
 `
 
 const EventInfo = styled.div`
-  padding: 0 var(--big);
+  padding: 0 var(--huge);
   
+  .body-text {
+    font-family: var(--body-text);
+    color: white;
+  }
+
   p {
     margin: .5rem 0;
-  }
-
-  &.meditation {
-    h3, .color {
-      color: var(--yellow);
-    }
-  }
-
-  &.astrology {
-    h3 {
-      color: white;
-    }
-  }
-
-  &.taro {
-    h3, .color {
-      color: var(--red);
-    }
   }
 `
 
@@ -69,10 +103,18 @@ const ButtonContainer = styled.div`
 `
 const ButtonH5 = styled.h5`
   padding: var(--small);
-  outline: none;
-  border: 2px solid white;
-  color: white;
-  margin: 0 auto;
+  color: var(--dark-grey);
+  margin: var(--medium) auto;
+
+  background: linear-gradient(to right, var(--yellow), var(--yellow) 50%, white 50%);
+  background-clip: text;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 275ms ease;
+
+  &:hover {
+    background-position: 0 100%;
+  }
 `
 
 const Events = ({nodes}) => {
@@ -90,7 +132,7 @@ const Events = ({nodes}) => {
           splitDayMonth = splitLocaleDate[1].trim().split(' ');
 
           return (
-            <EventContainer key={node.id}>
+            <EventContainer key = {node.id} className = {node.categories ? node.categories[0] : ''}>
               <EventDate>
                 <h5>{splitLocaleDate[0]}</h5>
                 <EventDay>{splitDayMonth[0]}</EventDay>
@@ -98,20 +140,22 @@ const Events = ({nodes}) => {
               </EventDate>
               <EventDetails>
                 <img src={node.categories ? `/img/${node.categories[0]}.svg` : ''} />
-                <EventInfo className = {node.categories ? node.categories[0] : ''}>
-                  <Link to={`event/${node.slug}`}><h3>{node.title}</h3></Link>
+                <EventInfo>
+                  <Link to={`event/${node.slug}`}>
+                    <h3>{node.title}</h3>
                   {/* TODO: Why getMinutes shows just the first digit */}
-                  <p className="uppercase" >{date.getHours()}:{date.getMinutes()}0</p>
+                  <p className="uppercase body-text" >{date.getHours()}:{date.getMinutes()}0</p>
                   <div className="color"><h5>Водещи: </h5> {
                       node.hosts.map((host, index) => {
-                        return <span className="dotted" key={index}>{host}</span>
+                        return <span className="dotted body-text" key={index}>{host}</span>
                       })
                     } 
                   </div>
-                  <p>{node.description.description.slice(0, 300)}</p>
+                  <p className="body-text">{node.description.description.slice(0, 300)}</p>
                   {node.repeatingEvent && node.repeatingEvent === true &&
                     <p className="uppercase color dotted">Повтарящо се събитие</p>
                   }
+                  </Link>
                 </EventInfo>
               </EventDetails>
             </EventContainer>

@@ -17,10 +17,18 @@ const FeaturedContainer = styled.div`
 const ButtonH5 = styled.h5`
   padding: var(--small);
   outline: none;
-  border: 2px solid var(--yellow);
   margin: var(--medium) 0;
-  background: transparent;
-  color: var(--yellow);
+  color: var(--dark-grey);
+
+  background: linear-gradient(to right, var(--yellow), var(--yellow) 50%, white 50%);
+  background-clip: text;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 275ms ease;
+
+  &:hover {
+    background-position: 0 100%;
+  }
 `
 
 const FeaturedText = styled.div`

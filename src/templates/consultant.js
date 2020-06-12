@@ -111,7 +111,7 @@ const Consultant = ({ data, location }) => {
             return (
               <span key={i}>
                 {contactField.contactLink
-                ? <a className="dotted" href={contactField.contactLink} target="_blank">{contactField.contactType}</a>
+                ? <a className="dotted" href={contactField.contactLink} target="_blank" rel="noopener noreferrer">{contactField.contactType}</a>
                 : <span className="dotted">{contactField.contactType}</span>
                 }
                 {contactField.contactDetail &&

@@ -15,7 +15,7 @@ import FeaturedEvent from "../components/featured";
 const GreyContainer = styled.div`
   background: var(--dark-grey);
   padding: var(--big) 0;
-  border-bottom: 2px solid white;
+  margin: var(--big) 0;
 `
 
 const HomePage = ({ data, location }) => {
@@ -31,14 +31,14 @@ const HomePage = ({ data, location }) => {
     <Layout location={location}>
       <Hero node={homePage.node} />
       <Consultants nodes={consultants} />
+      <GreyContainer>
+        <Classes nodes={classes} />
+      </GreyContainer>
       <Posts nodes={posts} />
       <GreyContainer>
         <FeaturedEvent node={featuredEvent.node} />
       </GreyContainer>
       <Consultations />
-      <GreyContainer>
-        <Classes nodes={classes} />
-      </GreyContainer>
       <Events nodes={events} />
       <Gallery node={gallery.node} />
     </Layout>
