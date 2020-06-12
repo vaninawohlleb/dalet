@@ -47,7 +47,7 @@ const Consultations = () => {
   const {allContentfulConsultation} = useStaticQuery(
     graphql `
     query {
-      allContentfulConsultation(limit: 5, sort: {
+      allContentfulConsultation(limit: 4, sort: {
           fields: [updatedAt],
           order: DESC
         },
@@ -64,10 +64,7 @@ const Consultations = () => {
             description {
               description
             }
-            consultant {
-              slug
-              id
-            }
+  
             image {
               fluid(maxWidth: 600) {
                 ...GatsbyContentfulFluid
@@ -102,10 +99,12 @@ const Consultations = () => {
         {allContentfulConsultation.edges.map(({node}) => {
           return (
             <Consultation key={node.id}> 
-              <Link to={`/consultant/${node.consultant.slug}#${node.slug}`} >
-                <Img fluid={node.image.fluid}></Img>
-                <h4>{node.title}</h4>
-              </Link>
+              {node.consultant &&
+                <Link to={`/consultant/${node.consultant.slug}#${node.slug}`} >
+                  <Img fluid={node.image.fluid}></Img>
+                  <h4>{node.title}</h4>
+                </Link>
+              }
               <p>{node.description.description.slice(0, 300)}</p>
             </Consultation>
           )
