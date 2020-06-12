@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import { Link } from "gatsby";
 
 const GalleryContainer = styled.div`
   // max-width: var(--max-width-large);
@@ -9,15 +10,26 @@ const GalleryContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 50vw);
   justify-content: center;
+
+  // .gatsby-image-wrapper {
+  //   background: var(--dark-grey);
+  // }
 `
 // extract this as a button
-const ButtonLink = styled.button`
+const ButtonH5 = styled.h5`
   padding: var(--small);
-  outline: none;
-  border: 2px solid var(--red);
-  color: var(--red);
+  color: white;
   margin: var(--medium) 0;
-  background: transparent;
+  
+  background: linear-gradient(to right, var(--dark-grey), var(--dark-grey) 50%, var(--red) 50%);
+  background-clip: text;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 275ms ease;
+
+  &:hover {
+    background-position: 0 100%;
+  }
 `
 
 const GalleryText = styled.div`
@@ -34,7 +46,7 @@ const Gallery = ({node}) => {
       <GalleryText>
         <h2>{node.title}</h2>
         <p>{node.description.description}</p>
-        <ButtonLink><h5>Направете запитване</h5></ButtonLink>
+        <Link><ButtonH5>Направете запитване</ButtonH5></Link>
       </GalleryText>
       <Img fluid={node.images[0].fluid}></Img>
       <Img fluid={node.images[1].fluid}></Img>

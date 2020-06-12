@@ -16,7 +16,6 @@ const EventContainer = styled.li`
   grid-column-gap: var(--medium);
   justify-content: center;
   padding: var(--big) 0;
-  // border-top: 4px solid var(--yellow);
 `
 
 const EventDate = styled.div`
@@ -30,6 +29,7 @@ const EventDetails = styled.div`
   img {
     align-self: flex-start;
     margin-top: var(--tiny);
+    min-width: 4.5vw;
   }
 `
 

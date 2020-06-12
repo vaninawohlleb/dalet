@@ -3,7 +3,19 @@ import styled,  { createGlobalStyle }  from 'styled-components';
 import Navigation from "../components/navigation";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Roboto&display=swap');
+  @font-face {
+    font-family: "Montserrat";
+    src: url("/fonts/Montserrat/Montserrat-Black.ttf");
+    font-display: swap;
+    font-weight: 900;
+  }
+
+  @font-face {
+    font-family: "Roboto";
+    src: url("/fonts/Roboto/Roboto-Regular.ttf");
+    font-display: swap;
+    font-weight: 400;
+  }
 
   :root {
     --tiny: .5rem;
@@ -127,12 +139,15 @@ const GlobalStyle = createGlobalStyle`
       }
     }    
   }
-`;
+`
 
 const Wrapper = styled.main `
   display: block;
   position: relative;
   margin: 0 auto;
+  background: url("/img/natal-card-1.svg") no-repeat;
+  background-size: 113%;
+  background-position: 21% -11%;
 `
 
 

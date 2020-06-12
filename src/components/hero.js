@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
+import SvgLeft from "./svg-left";
+import SvgRight from "./svg-right";
 
 const HeroContainer = styled.div`
   margin: 0 auto;
@@ -10,7 +12,6 @@ const HeroContainer = styled.div`
   justify-content: center;
   height: 90vh;
 `
-const HeroAnimation = styled.div``
 
 const HeroText = styled.div`
   display: flex;
@@ -39,21 +40,40 @@ const ButtonH5 = styled.h5`
   font-weight: 900;
   
   &.consultations {
-    background: var(--dark-grey);
     color: white;
+
+    background: linear-gradient(to right, var(--dark-grey), var(--dark-grey) 50%, var(--red) 50%);
+    background-clip: text;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+
+    &:hover {
+      background-position: 0 100%;
+    }
   }
 
   &.events {
     margin-left: var(--small);
-    color: var(--red);
-    border: 2px solid var(--red);
+    color: white;
+
+    background: linear-gradient(to right, var(--red), var(--red) 50%, var(--dark-grey) 50%);
+    background-clip: text;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+
+    &:hover {
+      background-position: 0 100%;
+    }
   }
 `
 
 const Hero = ({node}) => {
   return (
     <HeroContainer key={node.id}>
-      <HeroAnimation />
+      <SvgLeft />
+      <SvgRight />
       <HeroText>
         <h1>{node.title}</h1>
         <p>{node.description.description}</p>

@@ -14,6 +14,12 @@ const ClassesContainer = styled.ul`
 const Class = styled.li`
   padding: var(--small);
   color: white;
+  border-radius: 5px;
+  transition: all .5s;
+
+  &:hover {
+    transition: all .5s;
+  }
 
   h3 {
     color: white;
@@ -40,7 +46,7 @@ const Class = styled.li`
     display: flex;
 
     img {
-      max-height: 2.5rem;
+      max-height: 4vw;
       margin-right: var(--small);
       align-self: center;
     }

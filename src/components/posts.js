@@ -34,6 +34,18 @@ const PostsContainer = styled.ul `
 
   h3 {
     color: var(--red);
+
+    background: linear-gradient(to right, var(--dark-grey), var(--dark-grey) 50%, var(--red) 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 320ms ease;
+
+    &:hover {
+      background-position: 0 100%;
+    }
   }
 `
 const Posts = ({nodes}) => {
