@@ -50,7 +50,9 @@ const BlogPost = ({ data, location }) => {
       </HeaderText>
     </PostHeader>
     <BodyWrapper>
+      {post.description &&
       <Body node={post.description} />
+      }
     </BodyWrapper>
   </Layout>
   )

@@ -20,12 +20,17 @@ const EventContainer = styled.li`
   transition: all .5s;
   transform: translateX(3%);
 
+  h3, .color {
+    color: white;
+  }
+
   &:after {
     content: "";
     position: absolute;
     right: 0;
     width: var(--big);
     height: 100%;
+    background: white;
   }
 
   &:hover {
@@ -132,13 +137,16 @@ const Events = ({nodes}) => {
                 <EventInfo>
                   <Link to={`event/${node.slug}`}>
                   <h3>{node.title}</h3>
-                  <div>
-                    <span className="dotted after">Водещи</span> {
-                      node.hosts.map((host, index) => {
-                        return <span className="dotted after" key={index}>{host}</span>
-                      })
-                    } 
+                  {node.hosts &&
+                    <div>
+                      <span className="dotted after">Водещи</span> {
+                        node.hosts.map((host, index) => {
+                          return <span className="dotted after" key={index}>{host}</span>
+                        })
+                      } 
                   </div>
+                  }
+                  
                   <p>{node.description.description.slice(0, 300)}</p>
                   {node.repeatingEvent && node.repeatingEvent === true &&
                     <p className="uppercase color dotted all">Повтарящо се събитие</p>
