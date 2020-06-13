@@ -4,16 +4,9 @@ import styled from 'styled-components';
 const TextModuleContainer = styled.article `
   max-width: var(--max-width-mid);
   padding: var(--big) var(--huge);
-  margin: var(--small) auto;
+  margin: var(--small) auto var(--big);
   line-height: 1.5;
-  border-left: 0px solid var(--green);
-  transition: all .4s linear;
-
-  &:hover {
-    border-left: 20px solid var(--green);
-    transition: all .4s linear;
-  }
-  
+  border: 4px solid var(--yellow);
 `
 
 const InnerText = styled.div`
@@ -21,7 +14,7 @@ const InnerText = styled.div`
   margin: 0 auto;
 
   h3 {
-    color: var(--green);
+    color: var(--dark-grey);
   }
   
   a {

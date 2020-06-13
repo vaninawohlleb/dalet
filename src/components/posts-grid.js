@@ -48,21 +48,26 @@ const PostsContainer = styled.ul `
     }
   }
 `
-const Posts = ({nodes}) => {
+const Posts = ({nodes, location}) => {
+
   return (
     <PostsWrapper>
-      <PostsText>
-        <h2>Последни новини, съвети и предсказания</h2>
-        <Link to="/posts">Виж всички новини</Link>
-      </PostsText>
+      {location.pathname === '/' &&
+        <PostsText>
+          <h2>Последни новини, съвети и предсказания</h2>
+          <Link to="/posts">Виж всички новини</Link>
+        </PostsText>
+      }
       <PostsContainer>
         {nodes.map(({node}) => {
           return (
             <li key={node.id}>
-              <Link to={`post/${node.slug}`}>
+              <Link to={`${location.origin}/post/${node.slug}`}>
                 <h3>{node.title}</h3>
               </Link>
-              <p>{node.description.description.slice(0, 300)}</p>
+              {node.description && 
+                <p>{node.description.description.slice(0, 300)}</p>
+              }
             </li>
           )
         })}
