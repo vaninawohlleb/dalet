@@ -41,7 +41,7 @@ const Featured = ({node}) => {
   return (
     <FeaturedContainer key={node.id}>
       <FeaturedText>
-        <FeaturedDay>{localeDate}</FeaturedDay> от <FeaturedDay>{date.getHours()}:{date.getMinutes()}0</FeaturedDay>
+        <FeaturedDay>{localeDate}</FeaturedDay> от <FeaturedDay>{date.getHours()}:{date.getMinutes()}</FeaturedDay>
         <h2>{node.title}</h2>
         <p>{node.description.description.slice(0, 200)}</p>
         <Link to={`/event/${node.slug}`}>
