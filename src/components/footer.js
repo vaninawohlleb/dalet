@@ -20,7 +20,7 @@ const FooterContainer = styled.div`
 `
 const Footer = ({ root }) => {
   return (
-      <FooterContainer>
+      <FooterContainer id="footer">
         <p>Vanina Tsoneva / 2020</p>
         <div>
           <p>089 493 4423</p>

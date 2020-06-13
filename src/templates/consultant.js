@@ -70,7 +70,7 @@ const Consultation = styled.li`
   padding: var(--medium) 0;
 
   p {
-    padding-bottom: var(--small);
+    padding-bottom: 5px;
   }
 `
 
