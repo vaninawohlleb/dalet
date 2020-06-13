@@ -5,10 +5,10 @@ import styled from 'styled-components';
 import Layout from "../components/layout";
 import Hero from "../components/hero";
 import Consultants from "../components/consultants";
-import Posts from "../components/posts";
+import Posts from "../components/posts-grid";
 import Consultations from "../components/consultations";
 import Classes from "../components/classes";
-import Events from "../components/events";
+import Calendar from "../components/calendar-grid";
 import Gallery from "../components/gallery";
 import FeaturedEvent from "../components/featured";
 
@@ -34,12 +34,12 @@ const HomePage = ({ data, location }) => {
       <GreyContainer>
         <Classes nodes={classes} />
       </GreyContainer>
-      <Posts nodes={posts} />
+      <Posts nodes={posts} location={location}/>
       <GreyContainer>
         <FeaturedEvent node={featuredEvent.node} />
       </GreyContainer>
       <Consultations />
-      <Events nodes={events} />
+      <Calendar nodes={events} location={location}/>
       <Gallery node={gallery.node} />
     </Layout>
   )

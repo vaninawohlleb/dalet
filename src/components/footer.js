@@ -23,6 +23,7 @@ const Footer = ({ root }) => {
       <FooterContainer>
         <p>Vanina Tsoneva / 2020</p>
         <div>
+          <p>089 493 4423</p>
           <p>daletcenter@gmail.com</p>
           <p>ул. "Чарлз Дарвин" 10</p>
           <p>София 1113</p>

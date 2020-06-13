@@ -103,7 +103,7 @@ const Consultant = ({ data, location }) => {
       <Img fluid={consultant.photo.fluid} imgStyle={{ objectFit: 'contain' }}/>
       <HeaderText>
         <h2>{consultant.name}</h2>
-        <p>{consultant.bio.childMarkdownRemark.rawMarkdownBody}</p>
+        <p dangerouslySetInnerHTML={{ __html: consultant.bio.childMarkdownRemark.html}} />
         <ContactModule>
           {consultant.contact && consultant.contact.map((contactField, i) => {
             return (
@@ -180,7 +180,7 @@ const Consultant = ({ data, location }) => {
                 <span className="dotted all">{consultation.length}</span>
                 <span>Цена</span>
                 <span className="dotted all">{consultation.priceDetails}</span>
-                <p>{consultation.description.childMarkdownRemark.rawMarkdownBody}</p>
+                <p dangerouslySetInnerHTML={{ __html: consultation.description.childMarkdownRemark.html}} />
                 {consultation.contact &&
                 <ContactModule>
                   {consultation.contact.map((contactField, i) => {
@@ -224,7 +224,7 @@ query ConsultantQuery($slug: String!) {
     }
     bio {
       childMarkdownRemark {
-        rawMarkdownBody
+        html
       }
     }
     contact {
@@ -236,9 +236,6 @@ query ConsultantQuery($slug: String!) {
     classes {
       description {
         description
-        childMarkdownRemark {
-          rawMarkdownBody
-        }
       }
       end
       priceDetails
@@ -251,7 +248,7 @@ query ConsultantQuery($slug: String!) {
       id
       description {
         childMarkdownRemark {
-          rawMarkdownBody
+          html
         }
       }
       length

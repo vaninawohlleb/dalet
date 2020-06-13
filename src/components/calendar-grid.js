@@ -111,7 +111,8 @@ const ButtonContainer = styled.div`
   justify-content: center;
 `
 
-const Events = ({nodes}) => {
+const Events = ({nodes, location}) => {
+
   return (
     <CalendarContainer id="events"> {
       nodes.map(({node}) => {
@@ -125,6 +126,7 @@ const Events = ({nodes}) => {
           splitLocaleDate = localeDate.split(','),
           splitDayMonth = splitLocaleDate[1].trim().split(' ');
 
+          console.log(node)
           return (
             <EventContainer key = {node.id} className = {node.categories ? node.categories[0] : ''}>
               <EventDate>
@@ -135,7 +137,7 @@ const Events = ({nodes}) => {
               <EventDetails>
                 <img src={node.categories ? `/img/${node.categories[0]}.svg` : ''} />
                 <EventInfo>
-                  <Link to={`event/${node.slug}`}>
+                  <Link to = {`${location.origin}/event/${node.slug}`}>
                   <h3>{node.title}</h3>
                   {node.hosts &&
                     <div>
@@ -146,8 +148,9 @@ const Events = ({nodes}) => {
                       } 
                   </div>
                   }
-                  
-                  <p>{node.description.description.slice(0, 300)}</p>
+                  {node.description.description && 
+                    <p>{node.description.description.slice(0, 300)}</p>
+                  }
                   {node.repeatingEvent && node.repeatingEvent === true &&
                     <p className="uppercase color dotted all">Повтарящо се събитие</p>
                   }
