@@ -95,12 +95,14 @@ const Events = ({data}) => {
                     <Link to={`event/${node.slug}`}><h3>{node.title}</h3></Link>
                     {/* TODO: Why getMinutes shows just the first digit */}
                     <p className="uppercase" >{date.getHours()}:{date.getMinutes()}0</p>
+                    {node.hosts &&
                     <div className="color"><h5>Водещи: </h5> {
                         node.hosts.map((host, index) => {
                           return <span className="dotted" key={index}>{host}</span>
                         })
                       } 
                     </div>
+                    }
                     <p>{node.description.description.slice(0, 300)}</p>
                     {node.repeatingEvent && node.repeatingEvent === true &&
                       <p className="uppercase color dotted">Повтарящо се събитие</p>
@@ -121,7 +123,7 @@ export const EventIndexQuery = graphql`
   query EventIndexQuery {
     allContentfulEvent(sort: {
         fields: [date],
-        order: DESC
+        order: ASC
       },
       filter: {
         node_locale: {

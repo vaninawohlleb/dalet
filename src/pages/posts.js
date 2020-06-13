@@ -50,7 +50,9 @@ const Posts = ({data}) => {
                 <Link to={`post/${node.slug}`}>
                   <h3>{node.title}</h3>
                 </Link>
-                <p>{node.description.description.slice(0, 300)}</p>
+                {node.description && 
+                  <p>{node.description.description.slice(0, 300)}</p>
+                }
               </li>
             )
           })}
