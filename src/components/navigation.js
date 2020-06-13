@@ -57,7 +57,7 @@ const NavRight = styled.ul`
 
 
 const Navigation = ({root, children}) => {
-  console.log(root)
+
   return (
     <NavigationContainer>
       <NavLeft>
@@ -68,17 +68,17 @@ const Navigation = ({root, children}) => {
           <Link to="/posts">Новини</Link>
         </li>
         <li>
-          <Link to="#classes">Класове</Link>
+          <Link to={`${root}#classes`}>Класове</Link>
         </li>
       </NavLeft>
       <Logo>
-         <Link to={root}>
-          <img src="/img/dalet-logo.png" />
+        <Link to={root}>
+          <img src="/img/dalet-logo.png" alt="logo"/>
         </Link>
       </Logo>
       <NavRight>
         <li>
-          <Link to="#consultations">Консултации</Link>
+          <Link to={`${root}#consultations`}>Консултации</Link>
         </li>
         <li>
           <Link to="/events">Контакт</Link>

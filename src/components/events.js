@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import { Link } from "gatsby";
+import Button from "./button";
 
 const CalendarContainer = styled.ul`
   padding: var(--big) 0;
@@ -12,12 +13,12 @@ const CalendarContainer = styled.ul`
 const EventContainer = styled.li`
   position: relative;
   display: grid;
-  grid-template-columns: 20vw 80vw;
+  grid-template-columns: 18vw 80vw;
   grid-column-gap: var(--medium);
   justify-content: center;
   padding: var(--big);
   transition: all .5s;
-  transform: translateX(5%);
+  transform: translateX(3%);
 
   &:after {
     content: "";
@@ -80,11 +81,14 @@ const EventDetails = styled.div`
 `
 
 const EventInfo = styled.div`
-  padding: 0 var(--huge);
+  padding: 0 var(--huge) 0 var(--small);
   
-  .body-text {
+  p, span {
     font-family: var(--body-text);
-    color: white;
+
+    &:not(.color) {
+      color: white;
+    }
   }
 
   p {
@@ -100,21 +104,6 @@ const EventDay = styled.div `
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-`
-const ButtonH5 = styled.h5`
-  padding: var(--small);
-  color: var(--dark-grey);
-  margin: var(--medium) auto;
-
-  background: linear-gradient(to right, var(--yellow), var(--yellow) 50%, white 50%);
-  background-clip: text;
-  background-size: 200% 100%;
-  background-position: 100%;
-  transition: background-position 275ms ease;
-
-  &:hover {
-    background-position: 0 100%;
-  }
 `
 
 const Events = ({nodes}) => {
@@ -142,18 +131,17 @@ const Events = ({nodes}) => {
                 <img src={node.categories ? `/img/${node.categories[0]}.svg` : ''} />
                 <EventInfo>
                   <Link to={`event/${node.slug}`}>
-                    <h3>{node.title}</h3>
-                  {/* TODO: Why getMinutes shows just the first digit */}
-                  <p className="uppercase body-text" >{date.getHours()}:{date.getMinutes()}0</p>
-                  <div className="color"><h5>Водещи: </h5> {
+                  <h3>{node.title}</h3>
+                  <div>
+                    <span className="dotted after">Водещи</span> {
                       node.hosts.map((host, index) => {
-                        return <span className="dotted body-text" key={index}>{host}</span>
+                        return <span className="dotted after" key={index}>{host}</span>
                       })
                     } 
                   </div>
-                  <p className="body-text">{node.description.description.slice(0, 300)}</p>
+                  <p>{node.description.description.slice(0, 300)}</p>
                   {node.repeatingEvent && node.repeatingEvent === true &&
-                    <p className="uppercase color dotted">Повтарящо се събитие</p>
+                    <p className="uppercase color dotted all">Повтарящо се събитие</p>
                   }
                   </Link>
                 </EventInfo>
@@ -162,7 +150,9 @@ const Events = ({nodes}) => {
           )
         })}
       <ButtonContainer>
-        <Link to="/events"><ButtonH5>Виж всички събития</ButtonH5></Link>
+        <Link to="/events">
+          <Button color="var(--dark-grey)" changedBgr="white" originBgr="var(--yellow)" cta="Виж всички събития" />
+        </Link>
       </ButtonContainer>
     </CalendarContainer>
   )

@@ -2,22 +2,13 @@ import React from "react";
 import styled, { keyframes } from 'styled-components';
 
 const stroke = keyframes `
-  0% {
-    fill: transparent;
-    stroke-dasharray: 100 200;
-    stroke-dashoffset: 400;
+  from {
+    stroke-dasharray: 600;
+    stroke-dashoffset: 1000;
   }
 
-  50% {
-    stroke: #197278;
+  to {
     stroke-dashoffset: 0;
-    stroke-width: 1px;
-  }
-
-  100% {
-    stroke: #197278;
-    stroke-dashoffset: 0;
-    stroke-width: 4px;
   }
 `
 
@@ -27,11 +18,16 @@ const StyledSvgRight = styled.svg`
   top: -1.5%;
   width: 26%;
   fill: transparent;
-  opacity: .8;
   transform: scaleX(-1);
-  animation: 3.2s ${stroke} .3s linear;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
+
+  path {
+    stroke: #197278;
+    stroke-width: 2px;
+    animation: 2.8s ${stroke} .3s linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  
   `
 
 function Icon() {

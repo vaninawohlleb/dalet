@@ -8,7 +8,7 @@ import TextModule from "../components/text-module";
 
 const Header = styled.section`
   max-width: var(--max-width-large);
-  padding: var(--huge);
+  padding: var(--large) 0 var(--xxl);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 47vw 40vw;
@@ -65,29 +65,29 @@ const Event = ({ data, location }) => {
         </DateWrapper>
         <h2>{event.title}</h2>
         <div>
-          <span className="dotted">Начало</span>
-          <span className="dotted">{date.getHours()}:{date.getMinutes()}</span>
+          <span>Начало</span>
+          <span className="dotted all">{date.getHours()}:{date.getMinutes()}</span>
         </div>
         {event.hosts && 
         <div>
-          <span className="dotted">Водещи</span>
+          <span className="dotted after">Водещи</span>
           {event.hosts.map((host, i) => {
             return (
-              <span key={i} className="dotted">{host}</span>
+              <span key={i} className="dotted after">{host}</span>
             )
           })}
         </div>
         }
         <div>
-          <span className="dotted">Цена</span>
-          <span className="dotted">{event.priceDetails}</span>
+          <span>Цена</span>
+          <span className="dotted all">{event.priceDetails}</span>
         </div>
           {event.class && 
           <p>
-            <span className="dotted">Събитието е част от</span>
-            <span className="dotted">
+            <span>Събитието е част от</span>
+            <span className="dotted all">
               <Link to={`/class/${event.class.slug}`}>{event.class.title}</Link>
-              </span>
+            </span>
           </p>
           }
       </HeaderText>

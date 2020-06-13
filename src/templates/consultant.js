@@ -5,55 +5,55 @@ import styled from 'styled-components';
 import { graphql, Link } from "gatsby";
 import ClassImg from '../components/class-image';
 import ConsultationImg from '../components/consultation-image';
+import Button from "../components/button";
 
 const ConsultantHeader = styled.section`
   max-width: var(--max-width-large);
-  padding: var(--huge);
+  padding: var(--large) 0 var(--xxl);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 47vw 40vw;
   grid-column-gap: var(--big);
   justify-content: center;
   align-items: center;
+  background: var(--dark-grey);
+  color: white;
   
   .gatsby-image-wrapper {
     max-height: 80vh;
   }
 `
 
-const ConsultantBody = styled.section`
-  padding: var(--small) 0 var(--huge);
-  margin: 0 auto;
-`
-const HeaderText = styled.hgroup`
+const HeaderText = styled.hgroup `
   p {
     margin: var(--small) 0;
   }
 `
 
+const ConsultantBody = styled.section`
+  padding: var(--big) 0 var(--huge);
+  margin: 0 auto;
+`
 
 const ClassesWrapper = styled.div `
-  padding: var(--huge) 0;
   width: 100%;
-  background: var(--dark-grey);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 37vw 50vw;
   grid-column-gap: var(--big);
   justify-content: center;
   align-items: center;
-  color: white;
 `
 
 const SubHeader = styled.section``
 
 const SubInfo = styled.section`
-  .heading-class {
-    color: var(--yellow);
+  h2 {
+    color: var(--green);
   }
-
-  .heading-consultation {
-    color: var(--red);
+  
+  .uppercase {
+    color: var(--dark-grey);
   }
 
 `
@@ -71,7 +71,8 @@ const Consultation = styled.li`
 
   p {
     padding-bottom: var(--small);
-  }`
+  }
+`
 
 const ConsultationsWrapper = styled.ul`
   margin: 0 auto;
@@ -82,17 +83,14 @@ const ConsultationsWrapper = styled.ul`
   align-items: center;
 `
 
-const ButtonH5 = styled.h5`
-  padding: var(--small);
-  outline: none;
-  border: 2px solid var(--yellow);
-  color: var(--yellow);
-`
-
 const ContactModule = styled.div`
   a {
     font-family: var(--body-text);
-    color: var(--red);
+    color: var(--yellow);
+
+    &.consultation {
+      color: var(--green);
+    }
   }
 `
 
@@ -111,11 +109,11 @@ const Consultant = ({ data, location }) => {
             return (
               <span key={i}>
                 {contactField.contactLink
-                ? <a className="dotted" href={contactField.contactLink} target="_blank" rel="noopener noreferrer">{contactField.contactType}</a>
+                ? <a className="dotted after" href={contactField.contactLink} target="_blank" rel="noopener noreferrer">{contactField.contactType}</a>
                 : null
                 }
                 {contactField.contactDetail &&
-                  <span>{contactField.contactDetail}</span>
+                  <span className="dotted after">{contactField.contactDetail}</span>
                 }
               </span>
             )
@@ -130,7 +128,7 @@ const Consultant = ({ data, location }) => {
           <ClassImg />
         </SubHeader>
         <SubInfo>
-          <h2 className="heading-class">Класове</h2>
+          <h2>Класове</h2>
           <ul>
             {consultant.classes.map((consultantClass) => {
               // TODO: Do this in a function
@@ -153,11 +151,14 @@ const Consultant = ({ data, location }) => {
               return (
                 <Class key={consultantClass.id}>
                   <p className = "uppercase">{consultantClass.title}</p>
-                  <span className="dotted">Старт: {startLocaleDate}</span>
-                  <span className="middle dotted">Край: {endLocaleDate}</span> 
-                  <span className="dotted">Цена: {consultantClass.price}</span>
+                  <span>Старт</span>
+                  <span className="dotted all">{startLocaleDate}</span>
+                  <span>Край</span>
+                  <span className="dotted all">{endLocaleDate}</span> 
+                  <span>Цена</span>
+                  <span className="dotted all">{consultantClass.price}</span>
                   <p>{consultantClass.description.description.slice(0, 100)}...</p>
-                  <Link to={`/class/${consultantClass.slug}`}><ButtonH5>Виж повече информация</ButtonH5></Link>
+                  <Link to={`/class/${consultantClass.slug}`}><Button cta="Виж повече информация" color="white" border="var(--green)" originBgr="var(--dark-grey)" changedBgr="var(--green)" /></Link>
                 </Class>
               )})
             }
@@ -170,13 +171,15 @@ const Consultant = ({ data, location }) => {
           <ConsultationImg />
         </SubHeader>
         <SubInfo>
-           <h2 className="heading-consultation">Консултации</h2>
+          <h2>Консултации</h2>
           {consultant.consultations.map((consultation) => {
             return (
               <Consultation key={consultation.id} id={consultation.slug}>
                 <p className = "uppercase">{consultation.title}</p>
-                <span className="dotted">Продължителност: {consultation.length}</span>
-                <span className="dotted">Цена: {consultation.priceDetails}</span>
+                <span>Продължителност</span>
+                <span className="dotted all">{consultation.length}</span>
+                <span>Цена</span>
+                <span className="dotted all">{consultation.priceDetails}</span>
                 <p>{consultation.description.childMarkdownRemark.rawMarkdownBody}</p>
                 {consultation.contact &&
                 <ContactModule>
@@ -184,7 +187,7 @@ const Consultant = ({ data, location }) => {
                     return (
                       <span key={i} >
                         {contactField.contactLink
-                        ? <a className="dotted" href={contactField.contactLink}>{contactField.contactType}</a>
+                        ? <a className="dotted all consultation" href={contactField.contactLink}>{contactField.contactType}</a>
                         : null
                         }
                         {contactField.contactDetail &&
