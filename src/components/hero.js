@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
+import Button from "./button";
 
 import SvgTopLeft from "./svg-top-left";
 import SvgRight from "./svg-right";
@@ -27,50 +28,16 @@ const HeroText = styled.div`
 
   h1 {
     color: var(--yellow);
+    margin-top: 0;
   }
 `
 
 const Buttons = styled.div`
   margin: var(--big) auto;
-`
 
-const ButtonH5 = styled.h5`
-  padding: var(--small);
-  outline: none;
-
-  // extract this in a button comp
-  text-transform: uppercase;
-  font-size: calc(.7rem + .1vw);
-  font-weight: 900;
-  
-  &.consultations {
-    color: white;
-    border: 2px solid var(--green);
-
-    background: linear-gradient(to right, var(--dark-grey), var(--dark-grey) 50%, var(--green) 50%);
-    background-clip: text;
-    background-size: 202% 100%;
-    background-position: 100%;
-    transition: background-position 275ms ease;
-
-    &:hover {
-      background-position: 0 100%;
-    }
-  }
-
-  &.events {
-    margin-left: var(--small);
-    color: white;
-    border: 2px solid var(--green);
-
-    background: linear-gradient(to right, var(--green), var(--green) 50%, var(--dark-grey) 50%);
-    background-clip: text;
-    background-size: 200% 100%;
-    background-position: 100.2%;
-    transition: background-position 275ms ease;
-
-    &:hover {
-      background-position: 0 100%;
+  a {
+    &:first-child {
+      margin-right: var(--small);
     }
   }
 `
@@ -86,10 +53,10 @@ const Hero = ({node}) => {
         <p>{node.description.description}</p>
         <Buttons>
           <Link to="#consultations">
-            <ButtonH5 className="consultations">{node.cta1}</ButtonH5>
+            <Button color="white" borderColor="var(--green)" changedBgr="var(--green)" originBgr="var(--dark-grey)" cta="Консултации" />
           </Link>
           <Link to="#events">
-            <ButtonH5 className="events">{node.cta2}</ButtonH5>
+            <Button color="white" borderColor="var(--green)" changedBgr="var(--green)" originBgr="var(--dark-grey)" cta="Събития"/>
           </Link>
         </Buttons>
       </HeroText>

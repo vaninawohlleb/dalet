@@ -2,16 +2,13 @@ import React from "react";
 import styled, { keyframes } from 'styled-components';
 
 const stroke = keyframes `
-  0% {
-    fill: transparent;
-    stroke-dasharray: 100 200;
-    stroke-dashoffset: 400;
+  from {
+    stroke-dasharray: 800;
+    stroke-dashoffset: 1000;
   }
 
-  50%, 100% {
-    stroke: #fff;
+  to {
     stroke-dashoffset: 0;
-    stroke-width: 2px;
   }
 `
 
@@ -21,10 +18,15 @@ const StyledSvgTopRight = styled.svg`
   top: -10%;
   width: 25%;
   opacity: .6;
-  fill: transparent;
-  animation: 2s ${stroke} 1s linear;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
+
+  path {
+    fill: transparent;
+    stroke: #fff;
+    animation: 2s ${stroke} .4s linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  
   `
 
 function Icon() {

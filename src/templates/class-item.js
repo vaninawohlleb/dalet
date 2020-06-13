@@ -33,19 +33,6 @@ const BodyWrapper = styled.section`
 
 `
 const HeaderText = styled.hgroup`
-  .dotted {
-    &.force {
-      &:before {
-        content: "•";
-        padding: 10px;
-      }
-
-      &:after {
-        content: "•";
-        padding: 10px;
-      }
-    }
-  }
 `
 
 
@@ -75,25 +62,25 @@ const ClassItem = ({ data, location }) => {
         <h2>{classItem.title}</h2>
         <div>
           Продължителност
-          <span className="dotted">{classItem.length}</span>
+          <span className="dotted all">{classItem.length}</span>
         </div>
         <div>
-          <p>Старт<span className="force dotted">{startLocaleDate}</span></p>
-          <p>Край<span className="dotted">{endLocaleDate}</span></p>
+          <p>Старт<span className="dotted all">{startLocaleDate}</span></p>
+          <p>Край<span className="dotted all">{endLocaleDate}</span></p>
         </div>
         {classItem.teachers && 
         <Teachers>
           <span>Преподавател</span>
           {classItem.teachers.map((teacher, i) => {
               return (
-                <Link key={i} className="dotted" to={`consultant/${teacher.slug}`}>{teacher.name}</Link>
+                <Link key={i} className="dotted all" to={`consultant/${teacher.slug}`}>{teacher.name}</Link>
               )
             })}
         </Teachers>
         }
         <div>
-          <span className="dotted">Цена</span>
-          <span className="dotted">{classItem.priceDetails}</span>
+          <span>Цена</span>
+          <span className="dotted all">{classItem.priceDetails}</span>
         </div>
       </HeaderText>
     </Header>

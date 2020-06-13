@@ -1,6 +1,7 @@
 import React from "react"
 import styled,  { createGlobalStyle }  from 'styled-components';
 import Navigation from "../components/navigation";
+import Footer from "../components/footer";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -21,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
     --medium: 1.5rem;
     --big: 2rem;
     --large: 2.5rem;
+    --largeX: 3.5rem;
     --huge: 4.5rem;
     --xxl: 5rem;
     --hugest: 8rem;
@@ -51,7 +53,6 @@ const GlobalStyle = createGlobalStyle`
   
   html {
     font-size: 100%;
-    // font-weight: 400;
     scroll-behavior: smooth;
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
@@ -119,7 +120,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .dotted {
-    &:nth-child(odd) {
+    &.all {
       &:before {
         content: "•";
         padding: 10px;
@@ -131,12 +132,18 @@ const GlobalStyle = createGlobalStyle`
       }
     }
 
-    &.middle {
+    &.before {
       &:before {
         content: "•";
         padding: 10px;
       }
-    }    
+    }
+    &.after {
+      &:after {
+        content: "•";
+        padding: 10px;
+      }
+    }  
   }
 `
 
@@ -160,7 +167,9 @@ const Layout = ({ location, title, children }) => {
         <Navigation root={rootPath} children={children}/>
       </header>
       <Wrapper>{children}</Wrapper>
-      <footer></footer>
+      <footer>
+        <Footer root={rootPath}/>
+      </footer>
     </div>
   )
 }

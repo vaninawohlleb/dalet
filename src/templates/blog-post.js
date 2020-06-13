@@ -7,7 +7,7 @@ import Body from "../components/body";
 
 const PostHeader = styled.section`
   max-width: var(--max-width-large);
-  padding: var(--huge);
+  padding: var(--xxl) 0;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 47vw 40vw;
@@ -17,14 +17,14 @@ const PostHeader = styled.section`
   background: var(--grey);
 
   h2, a {
-    color: var(--red);
+    color: var(--green);
   }
 
   a {
     font-family: var(--body-text);
 
     &:visited {
-      color: var(--red);
+      color: var(--green);
     }
   }
 `
@@ -43,10 +43,10 @@ const BlogPost = ({ data, location }) => {
       <Img fluid={post.image.fluid}/>
       <HeaderText>
         <h2>{post.title}</h2>
-        <span className="dotted">
+        <span className="dotted after">
           <Link to={`/consultant/${post.author_ref.slug}`}>{post.author_ref.name}</Link>
         </span>
-        <span className="dotted">{post.createdAt}</span>
+        <span className="dotted after">{post.createdAt}</span>
       </HeaderText>
     </PostHeader>
     <BodyWrapper>

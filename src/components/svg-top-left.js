@@ -4,16 +4,13 @@ import styled, {
 } from 'styled-components';
 
 const stroke = keyframes `
-  0% {
-    fill: transparent;
-    stroke-dasharray: 100 300;
-    stroke-dashoffset: 500;
+  from {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
   }
 
-  50%, 100% {
-    stroke: #F4C578;
+  to {
     stroke-dashoffset: 0;
-    stroke-width: 2px;
   }
 `
 
@@ -24,10 +21,16 @@ const StyledSvgTopLeft = styled.svg `
   width: 23%;
   opacity: .7;
   transform: rotate(10deg);
-  fill: transparent;
-  animation: 2.5s ${stroke} linear;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
+
+  path {
+    fill: transparent;
+    stroke-width: 2px;
+    stroke: #F4C578;
+    animation: 2.5s ${stroke} .2s linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  
   `
 function Icon() {
   return (

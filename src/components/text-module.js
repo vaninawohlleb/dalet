@@ -2,17 +2,32 @@ import React from "react";
 import styled from 'styled-components';
 
 const TextModuleContainer = styled.article `
-  // max-width: var(--max-width-big);
-  padding: var(--small) var(--huge);
-  margin: 0 auto;
+  max-width: var(--max-width-mid);
+  padding: var(--big) var(--huge);
+  margin: var(--small) auto;
   line-height: 1.5;
-  background: var(--dark-grey);
-  color: white;
+  border-left: 0px solid var(--green);
+  transition: all .4s linear;
+
+  &:hover {
+    border-left: 20px solid var(--green);
+    transition: all .4s linear;
+  }
+  
 `
 
 const InnerText = styled.div`
   max-width: var(--max-width-big);
   margin: 0 auto;
+
+  h3 {
+    color: var(--green);
+  }
+  
+  a {
+    color: var(--green);
+    font-family: var(--body-text);
+  }
 `
 
 const TextModule = ({node, i}) => {
