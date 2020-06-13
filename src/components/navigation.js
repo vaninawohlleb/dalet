@@ -81,7 +81,7 @@ const Navigation = ({root, children}) => {
           <Link to={`${root}#consultations`}>Консултации</Link>
         </li>
         <li>
-          <Link to="/events">Контакт</Link>
+          <Link to={`${root}#footer`}>Контакт</Link>
         </li>
       </NavRight>
         

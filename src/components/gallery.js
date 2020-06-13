@@ -30,9 +30,6 @@ const Gallery = ({node}) => {
       <GalleryText>
         <h2>{node.title}</h2>
         <p>{node.description.description}</p>
-        <Link>
-          <Button color="white" changedBgr="var(--green)" originBgr="var(--dark-grey)" cta="Направете запитване" />
-        </Link>
       </GalleryText>
       <Img fluid={node.images[0].fluid}></Img>
       <Img fluid={node.images[1].fluid}></Img>

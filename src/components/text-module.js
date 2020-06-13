@@ -24,11 +24,12 @@ const InnerText = styled.div`
 `
 
 const TextModule = ({node, i}) => {
+  console.log(node)
   return (
     <TextModuleContainer key={i}>
       <InnerText>
         <h3>{node.title}</h3>
-        <p dangerouslySetInnerHTML={{ __html:node.description.childMarkdownRemark.html }} />
+        <div dangerouslySetInnerHTML={{ __html: node.description.childMarkdownRemark.html }} />
       </InnerText> 
     </TextModuleContainer>
   )
