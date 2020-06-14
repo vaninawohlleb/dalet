@@ -139,7 +139,7 @@ const Events = ({nodes, location}) => {
                 <img src={node.categories ? `/img/${node.categories[0]}.svg` : ''} />
                 <EventInfo>
                   <Link to={
-                      `${location.origin}${rootPath}event/${node.slug}`
+                      `${rootPath}event/${node.slug}`
                   }>
                   <h3>{node.title}</h3>
                   {node.hosts &&
