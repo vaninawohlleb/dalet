@@ -112,6 +112,9 @@ const ButtonContainer = styled.div`
 `
 
 const Events = ({nodes, location}) => {
+  const rootPath = `${__PATH_PREFIX__}/`
+
+  console.log(rootPath)
   return (
     <CalendarContainer id="events"> {
       nodes.map(({node}) => {
@@ -135,7 +138,8 @@ const Events = ({nodes, location}) => {
               <EventDetails>
                 <img src={node.categories ? `/img/${node.categories[0]}.svg` : ''} />
                 <EventInfo>
-                  <Link to = {`${location.origin}/event/${node.slug}`
+                  <Link to={
+                      `${location.origin}${rootPath}event/${node.slug}`
                   }>
                   <h3>{node.title}</h3>
                   {node.hosts &&
