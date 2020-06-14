@@ -8,7 +8,7 @@ const GalleryContainer = styled.div`
   padding: var(--huge) 0 var(--tiny);
   margin: 0 auto;
 
-  @media(min - width: 768 px) {
+  @media (min-width: 768px) {
     display: grid;
     grid-template-columns: repeat(2, 50vw);
     justify-content: center;
