@@ -114,7 +114,6 @@ const ButtonContainer = styled.div`
 const Events = ({nodes, location}) => {
   const rootPath = `${__PATH_PREFIX__}/`
 
-  console.log(rootPath)
   return (
     <CalendarContainer id="events"> {
       nodes.map(({node}) => {

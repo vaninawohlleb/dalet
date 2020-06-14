@@ -63,7 +63,7 @@ const Posts = ({nodes, location}) => {
         {nodes.map(({node}) => {
           return (
             <li key={node.id}>
-              <Link to={`${rootPath}/post/${node.slug}`}>
+              <Link to={`${rootPath}post/${node.slug}`}>
                 <h3>{node.title}</h3>
               </Link>
               {node.description && 
