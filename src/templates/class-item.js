@@ -42,6 +42,7 @@ const HeaderText = styled.hgroup`
 
 const ClassItem = ({ data, location }) => {
   const classItem = data.contentfulClass;
+  const rootPath = `${__PATH_PREFIX__}/`
 
   const startDate = new Date(classItem.start),
     startDateOptions = {
@@ -77,7 +78,7 @@ const ClassItem = ({ data, location }) => {
           <span>Преподавател</span>
           {classItem.teachers.map((teacher, i) => {
               return (
-                <Link key={i} className="dotted all" to={`consultant/${teacher.slug}`}>{teacher.name}</Link>
+                <Link key={i} className="dotted all" to={`${rootPath}consultant/${teacher.slug}`}>{teacher.name}</Link>
               )
             })}
         </Teachers>
