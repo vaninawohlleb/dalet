@@ -42,7 +42,7 @@ const HeaderText = styled.hgroup`
 
 const ClassItem = ({ data, location }) => {
   const classItem = data.contentfulClass;
-  const rootPath = `${__PATH_PREFIX__}/`
+  const rootPath = `${__PATH_PREFIX__}/`;
 
   const startDate = new Date(classItem.start),
     startDateOptions = {
@@ -90,7 +90,9 @@ const ClassItem = ({ data, location }) => {
       </HeaderText>
     </Header>
     <BodyWrapper>
-      <Body node={classItem.description} />
+      {classItem.description &&
+        <Body node={classItem.description} />
+      }
       {classItem.importantInfo &&
         <TextModule node={classItem.importantInfo[0]} />
       }
