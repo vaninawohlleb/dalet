@@ -8,6 +8,7 @@ const CalendarContainer = styled.ul`
   margin: 0 auto;
   background: var(--dark-grey);
   color: white;
+  overflow-x: hidden;
 `
 
 const EventContainer = styled.li`

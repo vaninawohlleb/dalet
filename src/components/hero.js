@@ -13,8 +13,12 @@ const HeroContainer = styled.div`
   display: grid;
   align-items: center;
   justify-content: center;
-  height: 82vh;
+  height: 100%;
   background: var(--dark-grey);
+
+  @media (min-width: 768px) {
+    height: 82vh;
+  }
 `
 
 const HeroText = styled.div`

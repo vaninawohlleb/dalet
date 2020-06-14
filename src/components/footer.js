@@ -16,6 +16,8 @@ const FooterContainer = styled.div`
 
   img {
     max-width: 80%;
+    display: flex;
+    align-self: self-end;
 
     @media (min-width: 768px) { 
       max-width: 20%;

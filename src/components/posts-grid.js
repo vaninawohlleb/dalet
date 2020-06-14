@@ -10,7 +10,11 @@ const PostsWrapper = styled.div`
 `
 
 const PostsText = styled.div`
-  padding: 0 var(--big);
+  padding: 0 var(--tiny);
+
+  @media (min-width: 768px) {
+    padding: 0 var(--big);
+  }
 
   h2 {
     text-transform: uppercase;
@@ -25,10 +29,11 @@ const PostsText = styled.div`
 `
 
 const PostsContainer = styled.ul `
-  padding: var(--big);
+  padding: var(--tiny);
   margin: 0 auto;
 
   @media (min-width: 768px) {
+    padding: var(--big);
     display: grid;
     grid-template-columns: repeat(2, 38.5vw);
     grid-column-gap: var(--medium);
