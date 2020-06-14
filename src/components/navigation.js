@@ -3,14 +3,18 @@ import styled from 'styled-components';
 import { graphql, Link } from "gatsby";
 
 const NavigationContainer = styled.nav `
-  // max-width: var(--max-width-big);
   padding: var(--medium);
-  display: grid;
-  grid-template-columns: 40% 17% 40%;
-  grid-column-gap: var(--medium);
-  justify-items: center;
-  align-items: center;
   background: var(--dark-grey);
+  margin: 0 auto;
+  display: block;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 40% 17% 40%;
+    grid-column-gap: var(--medium);
+    justify-items: center;
+    align-items: center;
+  }
 
   a {
     color: white;
@@ -39,7 +43,19 @@ const Logo = styled.div`
 `
 
 const NavLeft = styled.ul`
-  display: flex;
+  display: none;
+
+  @media only screen and (min-width: 375px) {
+    
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+
+  @media screen and (min-width: 1024px) {
+
+  }
 
   li {
     margin: 0 var(--small);
@@ -48,7 +64,11 @@ const NavLeft = styled.ul`
 `
 
 const NavRight = styled.ul`
-  display: flex;
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 
   li {
     margin: 0 var(--small);

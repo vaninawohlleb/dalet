@@ -25,12 +25,22 @@ const PostsText = styled.div`
 `
 
 const PostsContainer = styled.ul `
-  // max-width: var(--max-width-large);
   padding: var(--big);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 38.5vw);
-  grid-column-gap: var(--medium);
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 38.5vw);
+    grid-column-gap: var(--medium);
+  }
+
+  li {
+    margin: var(--big) 0;
+
+    @media (min-width: 768px) { 
+      margin: 0;
+    }
+  }
 
   h3 {
     color: var(--green);

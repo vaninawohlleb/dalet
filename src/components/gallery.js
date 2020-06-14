@@ -5,12 +5,14 @@ import { Link } from "gatsby";
 import Button from "./button";
 
 const GalleryContainer = styled.div`
-  // max-width: var(--max-width-large);
   padding: var(--huge) 0 var(--tiny);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 50vw);
-  justify-content: center;
+
+  @media(min - width: 768 px) {
+    display: grid;
+    grid-template-columns: repeat(2, 50vw);
+    justify-content: center;
+  }
 `
 const GalleryText = styled.div`
   padding: var(--huge);

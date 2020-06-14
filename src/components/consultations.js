@@ -6,11 +6,17 @@ import styled from 'styled-components';
 
 const ConsultationContainer = styled.ul`
   display: grid;
-  padding: var(--big);
+  padding: var(--tiny);
   margin: 0 auto;
-  grid-template-columns: repeat(4, 19.1vw);
-  grid-column-gap: var(--medium);
-  justify-content: center;
+  grid-template-columns: repeat(2, 44vw);
+  grid-column-gap: var(--small);
+
+  @media (min-width: 768px) {
+    padding: var(--big);
+    grid-template-columns: repeat(4, 19.1vw);
+    grid-column-gap: var(--medium);
+    justify-content: center;
+  }
 `
 const Buttons = styled.div`
 `

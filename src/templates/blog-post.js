@@ -7,14 +7,18 @@ import Body from "../components/body";
 
 const PostHeader = styled.section`
   max-width: var(--max-width-large);
-  padding: var(--xxl) 0;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 47vw 40vw;
-  grid-column-gap: var(--big);
-  justify-content: center;
-  align-items: center;
   background: var(--grey);
+  padding: var(--big);
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    padding: var(--xxl) 0;
+    display: grid;
+    grid-template-columns: 47vw 40vw;
+    grid-column-gap: var(--big);
+    justify-content: center;
+    align-items: center;
+  }
 
   h2, a {
     color: var(--green);

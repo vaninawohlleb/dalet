@@ -15,13 +15,17 @@ const FooterContainer = styled.div`
   }
 
   img {
-    max-width: 20%;
+    max-width: 80%;
+
+    @media (min-width: 768px) { 
+      max-width: 20%;
+    }
   }
 `
 const Footer = ({ root }) => {
   return (
       <FooterContainer id="footer">
-        <p>Vanina Tsoneva / 2020</p>
+        <p>Vanina Tsoneva</p>
         <div>
           <p>089 493 4423</p>
           <p>daletcenter@gmail.com</p>

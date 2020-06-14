@@ -9,15 +9,19 @@ import Button from "../components/button";
 
 const ConsultantHeader = styled.section`
   max-width: var(--max-width-large);
-  padding: var(--large) 0 var(--xxl);
+  padding: var(--big);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 47vw 40vw;
-  grid-column-gap: var(--big);
-  justify-content: center;
-  align-items: center;
   background: var(--dark-grey);
   color: white;
+
+  @media (min-width: 768px) { 
+    padding: var(--large) 0 var(--xxl);
+    display: grid;
+    grid-template-columns: 47vw 40vw;
+    grid-column-gap: var(--big);
+    justify-content: center;
+    align-items: center;
+  }
   
   .gatsby-image-wrapper {
     max-height: 80vh;

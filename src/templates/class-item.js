@@ -8,18 +8,22 @@ import TextModule from "../components/text-module";
 
 const Header = styled.section`
   max-width: var(--max-width-large);
-  padding: var(--huge);
+  padding: var(--big);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 47vw 40vw;
-  grid-column-gap: var(--big);
-  justify-content: center;
-  align-items: center;
   background: var(--dark-grey);
   color: white;
 
   h2 {
     color: var(--yellow);
+  }
+
+  @media (min-width: 768px) {
+    padding: var(--large) 0 var(--xxl);
+    display: grid;
+    grid-template-columns: 47vw 40vw;
+    grid-column-gap: var(--big);
+    justify-content: center;
+    align-items: center;
   }
 `
 
