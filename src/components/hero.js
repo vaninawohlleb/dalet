@@ -50,7 +50,7 @@ const Hero = ({node}) => {
       <SvgRight />
       <HeroText>
         <h1>{node.title}</h1>
-        <p>{node.description.description}</p>
+        <div dangerouslySetInnerHTML={{ __html: node.description.childMarkdownRemark.html}} />
         <Buttons>
           <Link to="#consultations">
             <Button color="white" borderColor="var(--green)" changedBgr="var(--green)" originBgr="var(--dark-grey)" cta="Консултации" />

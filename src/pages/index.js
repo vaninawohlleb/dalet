@@ -59,14 +59,12 @@ export const homePageQuery = graphql`
       edges {
         node {
           id
-          cta1
-          cta2
           contentful_id
-          linkForFirstButton
-          linkForSecondButton
           title
           description {
-            description
+             childMarkdownRemark {
+              html
+             }
           }
         }
       }
