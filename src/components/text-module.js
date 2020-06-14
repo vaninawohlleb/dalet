@@ -24,7 +24,6 @@ const InnerText = styled.div`
 `
 
 const TextModule = ({node, i}) => {
-  console.log(node)
   return (
     <TextModuleContainer key={i}>
       <InnerText>

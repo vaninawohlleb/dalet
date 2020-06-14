@@ -112,7 +112,6 @@ const ButtonContainer = styled.div`
 `
 
 const Events = ({nodes, location}) => {
-
   return (
     <CalendarContainer id="events"> {
       nodes.map(({node}) => {
@@ -126,7 +125,6 @@ const Events = ({nodes, location}) => {
           splitLocaleDate = localeDate.split(','),
           splitDayMonth = splitLocaleDate[1].trim().split(' ');
 
-          console.log(node)
           return (
             <EventContainer key = {node.id} className = {node.categories ? node.categories[0] : ''}>
               <EventDate>
@@ -137,7 +135,8 @@ const Events = ({nodes, location}) => {
               <EventDetails>
                 <img src={node.categories ? `/img/${node.categories[0]}.svg` : ''} />
                 <EventInfo>
-                  <Link to = {`${location.origin}/event/${node.slug}`}>
+                  <Link to = {`${location.origin != undefined ? location.origin : null}/event/${node.slug}`
+                  }>
                   <h3>{node.title}</h3>
                   {node.hosts &&
                     <div>
