@@ -70,7 +70,7 @@ const Posts = ({nodes, location}) => {
     <PostsWrapper>
       {location.pathname === '/' &&
         <PostsText>
-          <h2>Последни новини, съвети и прогнози</h2>
+          <h2>ПОРТАЛ КЪМ ЗВЕЗДНАТА ЕНЕРГИЯ</h2>
           <Link to="/posts">Виж всички новини</Link>
         </PostsText>
       }
