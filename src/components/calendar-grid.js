@@ -17,9 +17,13 @@ const EventContainer = styled.li`
   grid-column-gap: var(--medium);
   justify-content: center;
   padding: var(--big);
-  transition: all .5s;
-  transform: translateX(3%);
+  transform: translateX(6%);
 
+  @media (min-width: 768px) { 
+    transition: all .5s;
+    transform: translateX(3%);
+  }
+  
   h3, .color {
     color: white;
   }
@@ -34,8 +38,10 @@ const EventContainer = styled.li`
   }
 
   &:hover {
-    transition: all .5s;
-    transform: translateX(0%);
+    @media (min-width: 768px) {
+      transition: all .5s;
+      transform: translateX(0%);
+    }
   }
 
   &.meditation {
@@ -79,9 +85,14 @@ const EventDetails = styled.div`
   display: flex;
 
   img {
-    align-self: flex-start;
-    margin-top: var(--tiny);
-    min-width: 4.5vw;
+    display: none;
+    
+    @media (min-width: 768px) { 
+      display: block;
+      align-self: flex-start;
+      margin-top: var(--tiny);
+      min-width: 4.5vw;
+    }
   }
 `
 

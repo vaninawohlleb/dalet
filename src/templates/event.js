@@ -8,15 +8,19 @@ import TextModule from "../components/text-module";
 
 const Header = styled.section`
   max-width: var(--max-width-large);
-  padding: var(--large) 0 var(--xxl);
+  padding: var(--big);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 47vw 40vw;
-  grid-column-gap: var(--big);
-  justify-content: center;
-  align-items: flex-start;
   background: var(--dark-grey);
   color: white;
+
+  @media (min-width: 768px) {
+    padding: var(--large) 0 var(--xxl);
+    display: grid;
+    grid-template-columns: 47vw 40vw;
+    grid-column-gap: var(--big);
+    justify-content: center;
+    align-items: flex-start;
+  }
 `
 
 const HeaderText = styled.div`
@@ -35,9 +39,15 @@ const DateContainer = styled.h1`
 
 const DateWrapper = styled.hgroup `
   display: grid;
-  grid-template-columns: 20% 70%;
-  margin: 2px 0 var(--medium) 0;
   color: var(--yellow);
+  grid-template-columns: 25% 70%;
+  margin: var(--big) 0;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 20% 70%;
+    margin: 2px 0 var(--medium) 0;
+  }
+
 `
 const BodyWrapper = styled.section``
 

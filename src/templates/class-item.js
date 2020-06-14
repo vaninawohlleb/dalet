@@ -8,18 +8,22 @@ import TextModule from "../components/text-module";
 
 const Header = styled.section`
   max-width: var(--max-width-large);
-  padding: var(--huge);
+  padding: var(--big);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 47vw 40vw;
-  grid-column-gap: var(--big);
-  justify-content: center;
-  align-items: center;
   background: var(--dark-grey);
   color: white;
 
   h2 {
     color: var(--yellow);
+  }
+
+  @media (min-width: 768px) {
+    padding: var(--large) 0 var(--xxl);
+    display: grid;
+    grid-template-columns: 47vw 40vw;
+    grid-column-gap: var(--big);
+    justify-content: center;
+    align-items: center;
   }
 `
 
@@ -38,6 +42,7 @@ const HeaderText = styled.hgroup`
 
 const ClassItem = ({ data, location }) => {
   const classItem = data.contentfulClass;
+  const rootPath = `${__PATH_PREFIX__}/`
 
   const startDate = new Date(classItem.start),
     startDateOptions = {
@@ -73,7 +78,7 @@ const ClassItem = ({ data, location }) => {
           <span>Преподавател</span>
           {classItem.teachers.map((teacher, i) => {
               return (
-                <Link key={i} className="dotted all" to={`consultant/${teacher.slug}`}>{teacher.name}</Link>
+                <Link key={i} className="dotted all" to={`${rootPath}consultant/${teacher.slug}`}>{teacher.name}</Link>
               )
             })}
         </Teachers>

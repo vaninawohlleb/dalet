@@ -6,14 +6,22 @@ import styled from 'styled-components';
 const ConsultantsContainer = styled.ul`
   padding: var(--big);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 25vw);
-  grid-column-gap: var(--medium);
-  justify-content: center;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(3, 25vw);
+    grid-column-gap: var(--medium);
+    justify-content: center;
+  }
 `
 
 const Consultant = styled.li`
   position: relative;
+  margin: var(--big) 0;
+
+  @media (min-width: 768px) {
+    margin: 0;
+  }
 
   .gatsby-image-wrapper {
     max-height: 40vh;
