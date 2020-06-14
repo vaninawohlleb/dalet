@@ -43,10 +43,15 @@ const ClassesWrapper = styled.div `
   width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 37vw 50vw;
-  grid-column-gap: var(--big);
   justify-content: center;
   align-items: center;
+  grid-template-columns: 30vw 60vw;
+  grid-column-gap: var(--small);
+
+  @media (min-width: 768px) { 
+    grid-template-columns: 37vw 50vw;
+    grid-column-gap: var(--big);
+  }
 `
 
 const SubHeader = styled.section``
@@ -79,12 +84,18 @@ const Consultation = styled.li`
 `
 
 const ConsultationsWrapper = styled.ul`
+  width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 37vw 50vw;
-  grid-column-gap: var(--big);
   justify-content: center;
   align-items: center;
+  grid-template-columns: 30vw 60vw;
+  grid-column-gap: var(--small);
+
+  @media (min-width: 768px) { 
+    grid-template-columns: 37vw 50vw;
+    grid-column-gap: var(--big);
+  }
 `
 
 const ContactModule = styled.div`
