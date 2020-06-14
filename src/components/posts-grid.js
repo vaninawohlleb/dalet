@@ -49,6 +49,7 @@ const PostsContainer = styled.ul `
   }
 `
 const Posts = ({nodes, location}) => {
+  const rootPath = `${__PATH_PREFIX__}/`
 
   return (
     <PostsWrapper>
@@ -62,7 +63,7 @@ const Posts = ({nodes, location}) => {
         {nodes.map(({node}) => {
           return (
             <li key={node.id}>
-              <Link to={`${location.origin}/post/${node.slug}`}>
+              <Link to={`${rootPath}/post/${node.slug}`}>
                 <h3>{node.title}</h3>
               </Link>
               {node.description && 
