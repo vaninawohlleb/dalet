@@ -42,13 +42,16 @@ const ConsultantBody = styled.section`
 const ClassesWrapper = styled.div `
   width: 100%;
   margin: 0 auto;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: 30vw 60vw;
-  grid-column-gap: var(--small);
+  padding: var(--big);
+  
+  // grid-template-columns: 30vw 60vw;
+  // grid-column-gap: var(--small);
 
   @media (min-width: 768px) { 
+    padding: 0;
+    display: grid;
+    justify-content: center;
+    align-items: center;
     grid-template-columns: 37vw 50vw;
     grid-column-gap: var(--big);
   }
@@ -86,15 +89,15 @@ const Consultation = styled.li`
 const ConsultationsWrapper = styled.ul`
   width: 100%;
   margin: 0 auto;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: 30vw 60vw;
-  grid-column-gap: var(--small);
+  padding: var(--big);
 
   @media (min-width: 768px) { 
-    grid-template-columns: 37vw 50vw;
+    padding: var(--large) 0 var(--xxl);
+    display: grid;
+    grid-template-columns: 47vw 40vw;
     grid-column-gap: var(--big);
+    justify-content: center;
+    align-items: center;
   }
 `
 

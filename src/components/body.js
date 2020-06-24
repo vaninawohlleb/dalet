@@ -3,10 +3,13 @@ import styled from 'styled-components';
 
 const BodyContainer = styled.div`
   max-width: var(--max-width-big);
-  padding: var(--largeX) var(--huge);
+  padding: var(--big);
   margin: 0 auto;
   line-height: 1.5;
 
+  @media(min-width: 768px) {
+    padding: var(--largeX) var(--huge);
+  }
   img {
     max-width: 100%;
     margin: var(--small) auto;
