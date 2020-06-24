@@ -6,17 +6,13 @@ import Footer from "../components/footer";
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Roboto&display=swap');
 
-  // @font-face {
-  //   font-family: "Montserrat";
-  //   src: url("/fonts/Montserrat/Montserrat-Black.ttf");
-  //   font-weight: 900;
-  // }
 
-  // @font-face {
-  //   font-family: "Roboto";
-  //   src: url("/fonts/Roboto/Roboto-Regular.ttf");
-  //   font-weight: 400;
-  // }
+  // fallback for safari
+  @font-face {
+    font-family: "Montserrat";
+    src: url("/fonts/Montserrat/Montserrat-Black.ttf");
+    font-weight: 900;
+  }
 
   :root {
     --tiny: .5rem;
