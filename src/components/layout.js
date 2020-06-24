@@ -149,6 +149,7 @@ const Wrapper = styled.main `
   display: block;
   position: relative;
   margin: 0 auto;
+  overflow-x: hidden;
   // background: url("/img/natal-card-1.svg") no-repeat;
   // background-size: 113%;
   // background-position: 21% -11%;
