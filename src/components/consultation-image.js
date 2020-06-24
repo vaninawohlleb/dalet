@@ -3,7 +3,12 @@ import styled from 'styled-components';
 
 const StyledSvg = styled.svg `
   max-height: 50vh;
-  max-width: 30vw;
+  max-width: 70vw;
+    
+  @media(min-width: 768px) {
+    max-height: 50vh;
+    max-width: 30vw;
+  }
 `
 
 function SittingIcon() {
