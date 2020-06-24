@@ -93,8 +93,8 @@ export const homePageQuery = graphql`
     }
 
     allContentfulPost(limit: 2, sort: {
-      fields: [updatedAt],
-      order: ASC
+      fields: [createdAt],
+      order: DESC
     },
     filter: {
     node_locale: {

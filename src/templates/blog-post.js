@@ -12,12 +12,19 @@ const PostHeader = styled.section`
   margin: 0 auto;
 
   @media (min-width: 768px) {
-    padding: var(--xxl) 0;
+    padding: var(--xxl);
     display: grid;
-    grid-template-columns: 47vw 40vw;
+    grid-template-columns: minmax(0, 1fr) 1fr;
     grid-column-gap: var(--big);
     justify-content: center;
     align-items: center;
+  }
+
+  .gatsby-image-wrapper {
+    img {
+      max-width: 100%;
+      padding: 0 var(--large);
+    }
   }
 
   h2, a {
@@ -70,7 +77,7 @@ query PostQuery($slug: String!) {
     id
     title
     categories
-    createdAt(locale: "BG", formatString: "mm MMMM")
+    createdAt(locale: "BG", formatString: "D MMMM")
     author_ref {
       name
       slug
