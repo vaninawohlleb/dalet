@@ -1,21 +1,21 @@
 import React from "react";
 import styled, { keyframes } from 'styled-components';
 
-const stroke = keyframes `
-  from {
-    stroke-dasharray: 800;
-    stroke-dashoffset: 1000;
-  }
+// const stroke = keyframes `
+//   from {
+//     stroke-dasharray: 800;
+//     stroke-dashoffset: 1000;
+//   }
 
-  to {
-    stroke-dashoffset: 0;
-  }
-`
+//   to {
+//     stroke-dashoffset: 0;
+//   }
+// `
 
 const StyledSvgTopRight = styled.svg`
   position: absolute;
   right: -8%;
-  top: -4%;
+  top: -2%;
   width: 25%;
   opacity: .6;
   transform: rotate(90deg);
@@ -23,9 +23,6 @@ const StyledSvgTopRight = styled.svg`
   path {
     fill: transparent;
     stroke: #fff;
-    animation: 2s ${stroke} .4s linear;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
   }
   
   `

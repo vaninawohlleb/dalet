@@ -3,16 +3,16 @@ import styled, {
   keyframes
 } from 'styled-components';
 
-const stroke = keyframes `
-  from {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-  }
+// const stroke = keyframes `
+//   from {
+//     stroke-dasharray: 1000;
+//     stroke-dashoffset: 1000;
+//   }
 
-  to {
-    stroke-dashoffset: 0;
-  }
-`
+//   to {
+//     stroke-dashoffset: 0;
+//   }
+// `
 
 const StyledSvgTopLeft = styled.svg `
   position: absolute;
@@ -26,9 +26,6 @@ const StyledSvgTopLeft = styled.svg `
     fill: transparent;
     stroke-width: 2px;
     stroke: #F4C578;
-    animation: 2.5s ${stroke} .2s linear;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
   }
   
   `
