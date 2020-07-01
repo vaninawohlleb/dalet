@@ -113,7 +113,7 @@ export const homePageQuery = graphql`
       }
     }
 
-    allContentfulEvent(limit: 6, 
+    allContentfulEvent(limit: 3, 
     sort: {
       fields: [date],
       order: ASC

@@ -20,13 +20,6 @@ const PostHeader = styled.section`
     align-items: center;
   }
 
-  .gatsby-image-wrapper {
-    img {
-      max-width: 100%;
-      padding: 0 var(--large);
-    }
-  }
-
   h2, a {
     color: var(--green);
   }
@@ -88,7 +81,7 @@ query PostQuery($slug: String!) {
       }
     }
     image {
-      fluid(maxWidth: 800) {
+      fluid(maxWidth: 500) {
         ...GatsbyContentfulFluid
       }
     }
