@@ -4,8 +4,17 @@ import Navigation from "../components/navigation";
 import Footer from "../components/footer";
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Roboto&display=swap');
+  @font-face {
+    font-family: "Montserrat";
+    src: url("/fonts/Montserrat/Montserrat-Black.ttf");
+    font-weight: 900;
+  }
 
+  @font-face {
+    font-family: "Roboto";
+    src: url("/fonts/Roboto/Roboto-Regular.ttf");
+    font-weight: 400;
+  }
 
   :root {
     --tiny: .5rem;
@@ -41,9 +50,15 @@ const GlobalStyle = createGlobalStyle`
   *:after {
     box-sizing: border-box;
   }
+
+  .wf-loading * {
+    opacity: 0;
+    visibility: hidden;
+  }
   
   html {
     font-size: 100%;
+    font-weight: 400;
     scroll-behavior: smooth;
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
@@ -71,7 +86,7 @@ const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4, .uppercase {
     font-family: var(--heading-text);
-    font-weight: 800;
+    font-weight: 900;
   }
 
   h1 {
@@ -147,7 +162,6 @@ const Wrapper = styled.main `
   // background-size: 113%;
   // background-position: 21% -11%;
 `
-
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`

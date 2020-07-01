@@ -94,7 +94,7 @@ const ConsultationsWrapper = styled.ul`
   @media (min-width: 768px) { 
     padding: var(--large) 0 var(--xxl);
     display: grid;
-    grid-template-columns: 47vw 40vw;
+    grid-template-columns: 37vw 50vw;
     grid-column-gap: var(--big);
     justify-content: center;
     align-items: center;

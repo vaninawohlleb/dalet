@@ -125,7 +125,7 @@ const ButtonContainer = styled.div`
 
 const Events = ({nodes, location}) => {
   const rootPath = `${__PATH_PREFIX__}/`
-
+  console.log(location)
   return (
     <CalendarContainer id="events"> {
       nodes.map(({node}) => {
@@ -174,11 +174,14 @@ const Events = ({nodes, location}) => {
             </EventContainer>
           )
         })}
-      <ButtonContainer>
-        <Link to="/events">
-          <Button color="var(--dark-grey)" changedBgr="white" originBgr="var(--yellow)" cta="Виж всички събития" />
-        </Link>
-      </ButtonContainer>
+      
+        {location && location.pathname === '/' &&
+        <ButtonContainer>
+          <Link to="/events">
+            <Button color="var(--dark-grey)" changedBgr="white" originBgr="var(--yellow)" cta="Виж всички събития" />
+          </Link>
+        </ButtonContainer>
+        }
     </CalendarContainer>
   )
 }
