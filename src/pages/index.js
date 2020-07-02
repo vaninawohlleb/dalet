@@ -21,14 +21,15 @@ const GreyContainer = styled.div`
 const HomePage = ({ data, location }) => {
 
   console.log('index', location)
-  const events = data.allContentfulEvent.edges,
+  const events = data.AllEvents.edges,
     classes = data.allContentfulClass.edges,
     // consultations = data.allContentfulConsultation.edges,
     posts = data.allContentfulPost.edges,
     consultants = data.allContentfulConsultant.edges,
     gallery = data.allContentfulGallery.edges[0],
     homePage = data.allContentfulPage.edges[0],
-    featuredEvent = events.find(({node}) => node.featuredEvent === true);
+    featuredEvent = data.FeaturedEvent.edges[0];
+
   return (
     <Layout location={location}>
       <Hero node={homePage.node} />
@@ -37,11 +38,11 @@ const HomePage = ({ data, location }) => {
         <Classes nodes={classes} />
       </GreyContainer>
       <Posts nodes={posts} location={location}/>
-      {featuredEvent && featuredEvent.node &&
-      <GreyContainer>
-        <FeaturedEvent node={featuredEvent.node} />
-      </GreyContainer>
-      }
+        {featuredEvent && featuredEvent.node &&
+        <GreyContainer>
+          <FeaturedEvent node={featuredEvent.node} />
+        </GreyContainer>
+        }
       <Consultations />
       <Calendar nodes={events} location={location}/>
       <Gallery node={gallery.node} />
@@ -115,32 +116,61 @@ export const homePageQuery = graphql`
       }
     }
 
-    allContentfulEvent(limit: 3, 
-    sort: {
-      fields: [date],
-      order: ASC
-    },
-    filter: {
-    node_locale: {
-      eq: "bg"
-    }
-    }) {
-      edges {
-        node {
-          id
-          slug
-          title
-          description {
-            description
+    AllEvents: allContentfulEvent(limit: 3, 
+      sort: {
+        fields: [date],
+        order: ASC
+      },
+      filter: {
+      node_locale: {
+        eq: "bg"
+      }
+      }) {
+        edges {
+          node {
+            id
+            slug
+            title
+            description {
+              description
+            }
+            hosts
+            date(formatString: "")
+            categories
+            featuredEvent
+            repeatingEvent
           }
-          hosts
-          date(formatString: "")
-          categories
-          featuredEvent
-          repeatingEvent
         }
       }
-    }
+
+    FeaturedEvent: allContentfulEvent(limit: 1,
+      sort: {
+        fields: [date],
+        order: ASC
+      },
+      filter: {
+        node_locale: {
+          eq: "bg"
+        },
+        featuredEvent: {
+          eq: true
+        }
+      }) {
+        edges {
+          node {
+            id
+            slug
+            title
+            description {
+              description
+            }
+            hosts
+            date(formatString: "")
+            categories
+            featuredEvent
+          }
+        }
+      }
     
     allContentfulClass(limit: 4, filter: {
         node_locale: {
