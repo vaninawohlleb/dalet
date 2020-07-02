@@ -37,9 +37,11 @@ const HomePage = ({ data, location }) => {
         <Classes nodes={classes} />
       </GreyContainer>
       <Posts nodes={posts} location={location}/>
+      {featuredEvent && featuredEvent.node &&
       <GreyContainer>
         <FeaturedEvent node={featuredEvent.node} />
       </GreyContainer>
+      }
       <Consultations />
       <Calendar nodes={events} location={location}/>
       <Gallery node={gallery.node} />
