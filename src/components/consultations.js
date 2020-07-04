@@ -1,54 +1,74 @@
 import React,  { useState } from "react";
-import { CSSTransitionGroup } from "react-transition-group";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+}
 
-const ConsultationContainer = styled.ul`
-  display: grid;
+const ButtonGroup = ({ next, previous }) => {
+  return (
+    <div className="carousel-button-group">
+      <ButtonOne onClick={() => previous()}><img src="/img/next.svg" /></ButtonOne>
+      <ButtonTwo onClick={() => next()}><img src="/img/next.svg" /></ButtonTwo>
+    </div>
+  );
+};
+
+const ButtonOne = styled.button`
+  background: white;
+  border: none;
+  transform: rotate(180deg);
+
+  &:focus {
+    outline: none;
+  }
+
+  img {
+    margin-top: 3px;
+  }
+`
+
+const ButtonTwo = styled.button`
+  background: white;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+`
+
+const ConsultationContainer = styled.div`
   padding: var(--tiny);
   margin: 0 auto;
-  grid-template-columns: repeat(2, 44vw);
-  grid-column-gap: var(--small);
+  max-width: var(--max-width-big);
 
   @media (min-width: 768px) {
     padding: var(--big);
-    grid-template-columns: repeat(4, 19.1vw);
-    grid-column-gap: var(--medium);
-    justify-content: center;
-    align-items: start;
-    height: 80vh;
-  }
-
-  .slide-enter {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-
-  .slide-enter.slide-enter-active {
-    transform: translateX(0%);
-    opacity: 1;
-    transition: all 500ms ease-in;
-  }
-
-`
-const Nav = styled.div`
-  color: var(--green);
-  
-  button {
-    padding: var(--tiny);
-    background: white;
-    border: none;
-    color: var(--green);
-    display: block;
-
-    &:focus {
-      outline: none;
-    }
   }
 `
-const Consultation = styled.li`
+
+const Consultation = styled.div`
   padding: var(--small);
   width: 100%;
   height: 100%;
@@ -72,12 +92,12 @@ const Consultation = styled.li`
   }
 
   .gatsby-image-wrapper {
-    max-height: 160px;
+    max-height: 35vh;
   }
 `
 
 const Consultations = () => {
-  const [index, setIndex] = useState(0);
+  
   const {allContentfulConsultation} = useStaticQuery(
     graphql `
     query {
@@ -114,48 +134,31 @@ const Consultations = () => {
   `
   )
 
-  const length = allContentfulConsultation.edges.length - 3;
-
-  const handleNext = () => {
-    index === length ? setIndex(0) : setIndex(index + 3)
-  }
-
-  // const handlePrevious = () => {
-  //   index === 0 ? setIndex(length) : setIndex(index - 3);
-  // }
-
-  let consult_group = [];
-
-  for (let i = index; i < allContentfulConsultation.edges.length; i++) {
-    let consultation = allContentfulConsultation.edges[i].node;
-    consult_group.push(consultation);
-  }
-
   return (
-    <ConsultationContainer id="consultations">
-      <Nav>
-        <h3>Консултации</h3>
-        <button onClick={() => handleNext()}><img src="/img/next.svg" /></button>
-      </Nav>
-      {consult_group && consult_group.slice(0, 3).map(( node, i ) => {
-        return (
-          <CSSTransitionGroup
-            transitionName="slide"
-            transitionEnterTimeout={500}
-            transitionLeave={false}
-            key={i}
-          >
-            <Consultation key={node.id}>
-              <Link to={`/consultant/${node.consultant_1.slug}#${node.slug}`}>
-                <Img fluid={node.image.fluid}></Img>
-                <h4>{node.title}</h4>
-              </Link>
-              <p>{node.description.description.slice(0, 300)}</p>
-            </Consultation>
-          </CSSTransitionGroup>
-        )
-        })
-      }
+    <ConsultationContainer>
+      <Carousel
+        swipeable={false}
+        draggable={false}
+        showDots={false}
+        infinite={true}
+        responsive={responsive}
+        arrows={false} 
+        customButtonGroup={<ButtonGroup />}
+        renderButtonGroupOutside={true}
+      >
+        {allContentfulConsultation.edges &&
+          allContentfulConsultation.edges.map(({ node }, i) => {
+            return (
+              <Consultation key={node.id}>
+                <Link to={`/consultant/${node.consultant_1.slug}#${node.slug}`}>
+                  <Img fluid={node.image.fluid}></Img>
+                  <h4>{node.title}</h4>
+                </Link>
+                <p>{node.description.description.slice(0, 300)}</p>
+              </Consultation>
+            )
+          })}
+      </Carousel>
     </ConsultationContainer>
   )
 }
