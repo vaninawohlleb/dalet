@@ -19,8 +19,6 @@ const GreyContainer = styled.div`
 `
 
 const HomePage = ({ data, location }) => {
-
-  console.log('index', location)
   const events = data.AllEvents.edges,
     classes = data.allContentfulClass.edges,
     // consultations = data.allContentfulConsultation.edges,
