@@ -123,6 +123,7 @@ const GlobalStyle = createGlobalStyle`
 
   p {
     margin: .2rem 0;
+    font-size: 1.05rem;
   }
 
   .dotted {
