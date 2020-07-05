@@ -6,12 +6,13 @@ const FooterContainer = styled.div`
   background: var(--dark-grey);
   padding: var(--big);
   display: grid;
-  grid-template-columns: 40% 40% 20%;
-  color: white;
+  grid-template-columns: 70vw 20vw;
   border-top: 2px solid var(--yellow);
+  color: white;
 
   a {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
   }
 
   img {
@@ -20,14 +21,13 @@ const FooterContainer = styled.div`
     align-self: self-end;
 
     @media (min-width: 768px) { 
-      max-width: 20%;
+      max-width: 30%;
     }
   }
 `
 const Footer = ({ root }) => {
   return (
       <FooterContainer id="footer">
-        <p>Vanina Tsoneva</p>
         <div>
           <p>089 493 4423</p>
           <p>daletcenter@gmail.com</p>

@@ -10,10 +10,11 @@ const NavigationContainer = styled.nav `
 
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: 40% 17% 40%;
-    grid-column-gap: var(--medium);
+    grid-template-columns: 22% 17% 22%;
+    grid-column-gap: var(--tiny);
     justify-items: center;
     align-items: center;
+    justify-content: center;
   }
 
   a {
@@ -72,6 +73,11 @@ const NavRight = styled.ul`
 
   li {
     margin: 0 var(--small);
+
+    img {
+      display: flex;
+      width: 20px;
+    }
   }
 `
 
@@ -102,6 +108,9 @@ const Navigation = ({root, children}) => {
         </li>
         <li>
           <Link to={`${root}#footer`}>Контакт</Link>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/daleth.bg" target="blank"><img src="/img/facebook.svg" /></a>
         </li>
       </NavRight>
         

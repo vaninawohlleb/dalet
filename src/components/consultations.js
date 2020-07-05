@@ -66,6 +66,15 @@ const ConsultationContainer = styled.div`
   @media (min-width: 768px) {
     padding: var(--big);
   }
+
+  h2 {
+    color: var(--green);margin-bottom: var(--tiny);
+    padding: 0 var(--small);
+  }
+
+  .carousel-button-group {
+    padding: var(--tiny);
+  }
 `
 
 const Consultation = styled.div`
@@ -135,7 +144,8 @@ const Consultations = () => {
   )
 
   return (
-    <ConsultationContainer>
+    <ConsultationContainer id="consultations">
+      <h2>Консултации</h2>
       <Carousel
         swipeable={false}
         draggable={false}
