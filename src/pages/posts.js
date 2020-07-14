@@ -31,6 +31,7 @@ export const PostIndexQuery = graphql`
           id
           slug
           title
+          categories
           description {
             description
           }
