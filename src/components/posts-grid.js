@@ -42,7 +42,8 @@ const PostsText = styled.div`
     text-transform: uppercase;
     margin: var(--tiny) 0;
     color: var(--dark-grey);
-
+  }
+  
   a {
     font-family: var(--body-text);
     color: var(--green);
