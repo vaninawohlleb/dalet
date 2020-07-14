@@ -107,6 +107,7 @@ export const homePageQuery = graphql`
           id
           slug
           title
+          categories
           description {
             description
           }

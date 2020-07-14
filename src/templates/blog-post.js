@@ -40,7 +40,8 @@ const HeaderText = styled.hgroup``
 
 const BlogPost = ({ data, location }) => {
   const post = data.contentfulPost;
-
+  console.log(post.categories)
+  
   return (
   <Layout>
     <PostHeader>
@@ -48,9 +49,14 @@ const BlogPost = ({ data, location }) => {
       <HeaderText>
         <h2>{post.title}</h2>
         <span className="dotted after">
-          <Link to={`/consultant/${post.author_ref.slug}`}>{post.author_ref.name}</Link>
+          {post.authorMoreThenOne.map((author, i) => {
+            return <Link key={i} to={`/consultant/${author.slug}`}>{author.name}</Link>
+          })}
         </span>
         <span className="dotted after">{post.createdAt}</span>
+        {post.categories.map((category, i) => {
+          return <span key={i} className="dotted after">{category}</span>
+        })}
       </HeaderText>
     </PostHeader>
     <BodyWrapper>
@@ -71,7 +77,7 @@ query PostQuery($slug: String!) {
     title
     categories
     createdAt(locale: "BG", formatString: "D MMMM")
-    author_ref {
+    authorMoreThenOne {
       name
       slug
     }
