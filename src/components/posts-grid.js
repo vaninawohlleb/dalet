@@ -100,13 +100,12 @@ const Posts = ({nodes, location}) => {
       astrology_posts = nodes.filter(({node}) => node.categories.includes('астрология')),
       misc_posts = nodes.filter(({node}) => !node.categories.includes('астрология') 
         && !node.categories.includes('рейки') && !node.categories.includes('таро'));
-
   return (
     <div>
       {location.pathname === '/' &&
       <PostsWrapper>
         <PostsText>
-          <h2>ПОРТАЛ КЪМ ЗВЕЗДНАТА ЕНЕРГИЯ</h2>
+          <h2>Последни новини, статии и прогнози</h2>
           <Link to="/posts">Виж всички новини</Link>
         </PostsText>
         <Items nodes={nodes} />

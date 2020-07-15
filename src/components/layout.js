@@ -2,6 +2,7 @@ import React from "react"
 import styled,  { createGlobalStyle }  from 'styled-components';
 import Navigation from "../components/navigation";
 import Footer from "../components/footer";
+import CookieConsent from "react-cookie-consent";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -152,6 +153,17 @@ const GlobalStyle = createGlobalStyle`
       }
     }  
   }
+
+  .CookieConsent {
+    border-top: 2px solid white;
+
+    button {
+      background: var(--dark-grey) !important;
+      border: 2px solid var(--green) !important;
+      color: white !important;
+      text-transform: uppercase;
+    }
+  }
 `
 
 const Wrapper = styled.main `
@@ -159,9 +171,6 @@ const Wrapper = styled.main `
   position: relative;
   margin: 0 auto;
   overflow-x: hidden;
-  // background: url("/img/natal-card-1.svg") no-repeat;
-  // background-size: 113%;
-  // background-position: 21% -11%;
 `
 
 const Layout = ({ location, title, children }) => {
@@ -177,6 +186,11 @@ const Layout = ({ location, title, children }) => {
       <footer>
         <Footer root={rootPath}/>
       </footer>
+      <CookieConsent
+      location="bottom"
+      buttonText="Ок"
+      style={{ background: "#282F44" }}
+      >Този сайт използва бисквитки.</CookieConsent>
     </div>
   )
 }
