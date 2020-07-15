@@ -20,6 +20,10 @@ const BodyContainer = styled.div`
     font-family: var(--body-text);
   }
 
+  p {
+    margin: var(--small) 0;
+  }
+
   blockquote {
     position: relative;
     color: var(--dark-grey);
