@@ -75,10 +75,32 @@ const ConsultationContainer = styled.div`
   .carousel-button-group {
     padding: var(--tiny);
   }
+
+  .react-multiple-carousel__arrow--left,
+  .react-multiple-carousel__arrow--right {
+    top: 30%;
+  }
+
+  .react-multiple-carousel__arrow {
+    background: var(--green);
+   // border: 2px solid var(--green);
+
+    // &:before {
+    //   color: var(--green);
+    // }
+  }
+
+  .react-multiple-carousel__arrow--right {
+    right: 0%;
+  }
+
+  .react-multiple-carousel__arrow--left {
+    left: 0%;
+  }
 `
 
 const Consultation = styled.div`
-  padding: var(--small);
+  padding: var(--medium);
   width: 100%;
   height: 100%;
 
@@ -152,9 +174,9 @@ const Consultations = () => {
         showDots={false}
         infinite={true}
         responsive={responsive}
-        arrows={false} 
-        customButtonGroup={<ButtonGroup />}
-        renderButtonGroupOutside={true}
+        arrows={true} 
+        // customButtonGroup={<ButtonGroup />}
+        // renderButtonGroupOutside={true}
       >
         {allContentfulConsultation.edges &&
           allContentfulConsultation.edges.map(({ node }, i) => {
