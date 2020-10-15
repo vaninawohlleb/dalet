@@ -103,7 +103,7 @@ const Posts = ({nodes, location}) => {
   return (
     <div>
       {location.pathname === '/' &&
-      <PostsWrapper>
+      <PostsWrapper id="posts">
         <PostsText>
           <h2>Последни новини, статии и прогнози</h2>
           <Link to="/posts">Виж всички новини</Link>
@@ -113,9 +113,6 @@ const Posts = ({nodes, location}) => {
     }
     {location.pathname !== '/' &&
     <PostsWrapper>
-      <PostsCategories>
-        <h2 className="misc">Общи</h2>
-      </PostsCategories>
       <Items nodes={misc_posts} />
       <PostsCategories >
         <img src="/img/taro.svg" />

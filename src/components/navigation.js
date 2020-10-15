@@ -73,10 +73,20 @@ const NavRight = styled.ul`
 
   li {
     margin: 0 var(--small);
+    display: flex;
+    align-items: center;
+    
+    &:first-child {
+      img {
+        width: 25px;
+      }
+    }
 
-    img {
-      display: flex;
-      width: 20px;
+    &:last-child {
+      img {
+        border-radius: 20%;
+        width: 18px;
+      }
     }
   }
 `
@@ -91,7 +101,7 @@ const Navigation = ({root, children}) => {
           <Link to="/events">Събития</Link>
         </li>
         <li>
-          <Link to="/posts">Новини</Link>
+          <Link to={`${root}#posts`}>Блог</Link>
         </li>
         <li>
           <Link to={`${root}#classes`}>Класове</Link>
@@ -110,7 +120,10 @@ const Navigation = ({root, children}) => {
           <Link to={`${root}#footer`}>Контакт</Link>
         </li>
         <li>
-          <a href="https://www.facebook.com/daleth.bg" target="blank"><img src="/img/facebook.svg" /></a>
+          <a href="https://www.instagram.com/daletcenter/" target="blank"><img src="/img/instagram.svg" /></a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/daletcenter" target="blank"><img src="/img/facebook.svg" /></a>
         </li>
       </NavRight>
         
