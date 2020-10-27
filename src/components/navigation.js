@@ -10,7 +10,7 @@ const NavigationContainer = styled.nav `
 
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: 22% 17% 22%;
+    grid-template-columns: 38vw 18vw 38vw;
     grid-column-gap: var(--tiny);
     justify-items: center;
     align-items: center;
@@ -76,13 +76,18 @@ const NavRight = styled.ul`
     display: flex;
     align-items: center;
     
-    &:first-child {
+    &.insta, 
+    &.youtube {
+      margin-right: 2px;
+
       img {
         width: 25px;
       }
     }
 
-    &:last-child {
+    &.facebook {
+      margin-right: 2px;
+
       img {
         border-radius: 20%;
         width: 18px;
@@ -119,11 +124,14 @@ const Navigation = ({root, children}) => {
         <li>
           <Link to={`${root}#footer`}>Контакт</Link>
         </li>
-        <li>
+        <li className="insta">
           <a href="https://www.instagram.com/daletcenter/" target="blank"><img src="/img/instagram.svg" /></a>
         </li>
-        <li>
+        <li className="facebook">
           <a href="https://www.facebook.com/daletcenter" target="blank"><img src="/img/facebook.svg" /></a>
+        </li>
+        <li className="youtube">
+          <a href="https://www.facebook.com/daletcenter" target="blank"><img src="/img/youtube.svg" /></a>
         </li>
       </NavRight>
         

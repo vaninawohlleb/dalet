@@ -8,8 +8,9 @@ const ConsultantsContainer = styled.ul`
   margin: 0 auto;
 
   @media (min-width: 768px) {
+    padding: var(--huge);
     display: grid;
-    grid-template-columns: repeat(3, 25vw);
+    grid-template-columns: repeat(4, 20vw);
     grid-column-gap: var(--medium);
     justify-content: center;
   }
@@ -24,7 +25,9 @@ const Consultant = styled.li`
   }
 
   .gatsby-image-wrapper {
-    max-height: 40vh;
+    @media (min-width: 768px) {
+      height: 260px;
+    }
 
     img {
       width: 100%;
