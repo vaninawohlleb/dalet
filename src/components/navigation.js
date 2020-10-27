@@ -131,7 +131,7 @@ const Navigation = ({root, children}) => {
           <a href="https://www.facebook.com/daletcenter" target="blank"><img src="/img/facebook.svg" /></a>
         </li>
         <li className="youtube">
-          <a href="https://www.facebook.com/daletcenter" target="blank"><img src="/img/youtube.svg" /></a>
+          <a href="https://www.youtube.com/channel/UCoUOGLJzw0r09Z6EZpN-KfA?view_as=subscriber" target="blank"><img src="/img/youtube.svg" /></a>
         </li>
       </NavRight>
         
