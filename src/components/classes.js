@@ -70,7 +70,7 @@ const Classes = ({nodes}) => {
               <h3>{node.title}</h3>
             </Link>
             <p>Продължителност: {node.length}</p>
-            <p>Този курс е от {start_date.getDate()}.{start_date.getMonth()}.{start_date.getFullYear()} до {end_date.getDate()}.{end_date.getMonth()}.{end_date.getFullYear()}</p>
+            <p>Този курс е от {start_date.getDate()}.{start_date.getMonth()+1}.{start_date.getFullYear()} до {end_date.getDate()}.{end_date.getMonth()+1}.{end_date.getFullYear()}</p>
           </Class>
         )
       })}
