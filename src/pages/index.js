@@ -72,7 +72,7 @@ export const homePageQuery = graphql`
     }
 
     allContentfulConsultant (
-      limit: 3, 
+      limit: 4, 
       sort: { fields: [updatedAt], order: DESC },
       filter: {
       node_locale: {
