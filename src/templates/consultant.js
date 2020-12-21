@@ -114,7 +114,7 @@ const ContactModule = styled.div`
 
 const Consultant = ({ data, location }) => {
   const consultant = data.contentfulConsultant;
-
+  console.log(consultant.bio.childMarkdownRemark.html)
   return (
   <Layout>
     <ConsultantHeader>
