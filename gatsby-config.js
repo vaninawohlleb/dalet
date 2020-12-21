@@ -2,15 +2,15 @@ require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Далет - център за познание`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Ванина Цонева`,
+      summary: `Тук разширявате знанието си, освобождавате надеждата и сте архитект на идеите си. Далет е Портал към благоприятните пътища за опознаване на себе си и света и Междинна станция за вас и връзката ви с автентичността. Вие сте архитектът, а ние сме материализацията чрез курсове, практики и индивидуални консултации.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    description: `Тук разширявате знанието си, освобождавате надеждата и сте архитект на идеите си. Далет е Портал към благоприятните пътища за опознаване на себе си и света и Междинна станция за вас и връзката ви с автентичността.Вие сте архитектът, а ние сме материализацията чрез курсове, практики и индивидуални консултации.`,
+    siteUrl: `https://daletcenter.com`,
     social: {
-      twitter: `kylemathews`,
+      twitter: ``,
     },
   },
   plugins: [
@@ -54,6 +54,12 @@ module.exports = {
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: "371928883772986",
       },
     },
     `gatsby-plugin-react-helmet`,
