@@ -76,7 +76,7 @@ const Event = ({ data, location }) => {
         <h2>{event.title}</h2>
         <div>
           <span>Начало</span>
-          <span className="dotted all">{date.getHours()}:{date.getMinutes()}</span>
+          <span className="dotted all">{date.getHours()}:{date.getMinutes()<10 ? '0' :''}{date.getMinutes()}</span>
         </div>
         {event.hosts && 
         <div>
