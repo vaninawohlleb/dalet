@@ -1,8 +1,11 @@
 import React from "react"
 import styled,  { createGlobalStyle }  from 'styled-components';
+import CookieConsent from "react-cookie-consent";
+import { Helmet } from 'react-helmet'
+
 import Navigation from "../components/navigation";
 import Footer from "../components/footer";
-import CookieConsent from "react-cookie-consent";
+import Meta from "../components/meta";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -173,11 +176,17 @@ const Wrapper = styled.main `
   overflow-x: hidden;
 `
 
-const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
+const Layout = ({ location, children }) => {
+  const rootPath = `${__PATH_PREFIX__}/`;
+  const {title, description} = Meta();
 
   return (
     <div>
+      <Helmet>
+        <html lang='bg' />
+        <title>{title}</title>
+        <meta name='description' content={description} />
+      </Helmet>
       <GlobalStyle />
       <header>
         <Navigation root={rootPath} children={children}/>
