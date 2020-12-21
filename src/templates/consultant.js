@@ -121,7 +121,7 @@ const Consultant = ({ data, location }) => {
       <Img fluid={consultant.photo.fluid} imgStyle={{ objectFit: 'contain' }}/>
       <HeaderText>
         <h2>{consultant.name}</h2>
-        <p dangerouslySetInnerHTML={{ __html: consultant.bio.childMarkdownRemark.html}} />
+        <p>testing</p>
         <ContactModule>
           {consultant.contact && consultant.contact.map((contactField, i) => {
             return (
