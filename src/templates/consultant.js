@@ -114,14 +114,14 @@ const ContactModule = styled.div`
 
 const Consultant = ({ data, location }) => {
   const consultant = data.contentfulConsultant;
-  console.log(consultant.bio.childMarkdownRemark.html)
+  
   return (
   <Layout>
     <ConsultantHeader>
       <Img fluid={consultant.photo.fluid} imgStyle={{ objectFit: 'contain' }}/>
       <HeaderText>
         <h2>{consultant.name}</h2>
-        <p>testing</p>
+        <div dangerouslySetInnerHTML={{ __html: consultant.bio.childMarkdownRemark.html}} />
         <ContactModule>
           {consultant.contact && consultant.contact.map((contactField, i) => {
             return (
