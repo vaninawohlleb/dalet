@@ -65,7 +65,8 @@ const EventContainer = styled.li`
     }
   }
 
-  &.taro {
+  &.taro,
+  &.Taro {
     h3, .color {
       color: var(--green);
     }

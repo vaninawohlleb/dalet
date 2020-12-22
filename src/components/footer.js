@@ -5,23 +5,28 @@ import { Link } from "gatsby";
 const FooterContainer = styled.div`
   background: var(--dark-grey);
   padding: var(--big);
-  display: grid;
-  grid-template-columns: 70vw 20vw;
+
   border-top: 2px solid var(--yellow);
   color: white;
 
+  @media (min-width: 768px) { 
+    display: grid;
+    grid-template-columns: 35vw 35vw 20vw;
+  }
+
   a {
-    display: flex;
-    justify-content: flex-end;
+    @media (min-width: 768px) { 
+      display: flex;
+      justify-content: flex-end;
+    }    
   }
 
   img {
-    max-width: 80%;
-    display: flex;
-    align-self: self-end;
-
+    max-width: 30%;
+    
     @media (min-width: 768px) { 
-      max-width: 30%;
+      display: flex;
+      align-self: self-end;
     }
   }
 `
@@ -34,6 +39,15 @@ const Footer = ({ root }) => {
           <p>ул. "Чарлз Дарвин" 10</p>
           <p>София 1113</p>
         </div>
+
+        <div>
+          <p>Банковите ни детйли са:</p>
+          <p>ЕЗОТЕРИЧЕН ЦЕНТЪР ДАЛЕТ ЕООД</p>
+          <p>Сметка в ПИБ: BG53FINV91501017309661</p>
+          <p>Банков код: FINVBGSF</p>
+          <p>Основание за плащане: такса обучение</p>
+        </div>
+        
         <Link to={root}>
           <img src="/img/dalet-logo.png" alt="logo"/>
         </Link>
