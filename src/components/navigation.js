@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import { graphql, Link } from "gatsby";
+import { slide as Menu } from 'react-burger-menu';
 
 const NavigationContainer = styled.nav `
   padding: var(--medium);
@@ -96,8 +97,74 @@ const NavRight = styled.ul`
   }
 `
 
+const MobileMenu = styled.div`
+  #react-burger-menu-btn {
+    height: 10% !important;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .bm-burger-bars {
+    height: 3px !important;
+    width: 30px;
+    background: var(--yellow);
+    left: 85vw !important;
+  
+    @media screen and (min-width: 768px) {
+      left: 100vw !important;
+    }
+
+    &:nth-of-type(1) {
+      top: 5% !important;
+    }
+
+    &:nth-of-type(2) {
+      top: 6% !important;
+    }
+
+    &:nth-of-type(3) {
+      top: 7% !important;
+    }
+  }
+
+  .bm-cross {
+    background: var(--yellow);
+
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+
+  .bm-menu-wrap {
+    top: 0;
+    padding: var(--big);
+    background: var(--dark-grey);
+
+    li {
+      padding: var(--tiny) 0;
+      &:focus {
+        outline: none;
+        border: none;
+      }
+    }
+  }
+`
 
 const Navigation = ({root, children}) => {
+  // showSettings (e) {
+  //   e.preventDefault();
+  // }
 
   return (
     <NavigationContainer>
@@ -134,7 +201,25 @@ const Navigation = ({root, children}) => {
           <a href="https://www.youtube.com/channel/UCoUOGLJzw0r09Z6EZpN-KfA?view_as=subscriber" target="blank"><img src="/img/youtube.svg" /></a>
         </li>
       </NavRight>
-        
+      <MobileMenu>
+        <Menu noOverlay right >
+          <li>
+            <Link to="/events">Събития</Link>
+          </li>
+          <li>
+            <Link to="/posts">Блог</Link>
+          </li>
+          <li>
+            <Link to={`${root}#classes`}>Класове</Link>
+          </li>
+          <li>
+            <Link to={`${root}#consultations`}>Консултации</Link>
+          </li>
+          <li>
+            <Link to={`${root}#footer`}>Контакт</Link>
+          </li>
+        </Menu>
+      </MobileMenu>
     </NavigationContainer>
   )
 }
