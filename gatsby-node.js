@@ -71,7 +71,7 @@ exports.createPages = async ({ graphql, actions }) => {
       classes = result.data.allContentfulClass.edges,
       consultations = result.data.allContentfulConsultation.edges,
       posts = result.data.allContentfulPost.edges,
-      consultants = result.data.allContentfulConsultant.edges
+      consultants = result.data.allContentfulConsultant.edges;
 
 
   function createAll(items, path, component) {

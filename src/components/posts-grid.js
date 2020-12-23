@@ -114,6 +114,11 @@ const Posts = ({nodes, location}) => {
     {location.pathname !== '/' &&
     <PostsWrapper>
       <Items nodes={misc_posts} />
+      <PostsCategories>
+        <img src="/img/astrology-green.svg" />
+        <h2 className="astro">Астрология</h2>
+      </PostsCategories>
+      <Items nodes={astrology_posts} />
       <PostsCategories >
         <img src="/img/taro.svg" />
         <h2 className="taro">Таро</h2>
@@ -124,11 +129,6 @@ const Posts = ({nodes, location}) => {
         <h2 className="reiki">Рейки</h2>
       </PostsCategories>
       <Items nodes={reiki_posts} />
-      <PostsCategories>
-        <img src="/img/astrology-green.svg" />
-        <h2 className="astro">Астрология</h2>
-      </PostsCategories>
-      <Items nodes={astrology_posts} />
     </PostsWrapper>
     }
     </div>
